@@ -62,7 +62,7 @@ layout: two-cols
 コンピュータにとって画像とは？
 
 <div class="ml-2">
-<carbon-arrow-right class="mr-2" />数値（ピクセル）の2次元配列
+<carbon-arrow-right class="mr-2" />数値（ピクセル）の配列
 </div>
 
 
@@ -239,8 +239,8 @@ layout: section
 
 以下のリンクをクリックしてColabを開いてください
 
-<div class="text-center my-8">
-  <a href="https://colab.research.google.com/github/{owner}/{repo}/blob/main/code/experience.ipynb" target="_blank" class="text-2xl underline text-blue-600">
+<div class=" my-8">
+  <a href="https://colab.research.google.com/github/micanis/trial_class/blob/main/code/dot_ipynbs/experience.ipynb" target="_blank" class="text-2xl underline text-blue-600">
     Colabで開く
   </a>
 </div>
