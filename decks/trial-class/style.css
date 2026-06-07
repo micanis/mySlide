@@ -1,0 +1,14 @@
+.slidev-layout.default .content-area,
+.slidev-layout.toc .content-area,
+.slidev-layout.two-cols .content-area,
+.slidev-layout.three-cols .content-area,
+.slidev-layout.two-rows .content-area,
+.slidev-layout.bento .content-area {
+  height: 76.5%;
+}
+
+.slidev-layout.two-cols .content-grid:not(:has(.conc-slot)),
+.slidev-layout.three-cols .content-grid:not(:has(.conc-slot)),
+.slidev-layout.two-rows .content-grid:not(:has(.conc-slot)) {
+  grid-template-rows: minmax(0, 1fr);
+}

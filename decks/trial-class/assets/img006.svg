@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560" role="img" aria-labelledby="title desc">
+  <title id="title">Convolution diagram</title>
+  <desc id="desc">A 5 by 5 input grid, a 3 by 3 kernel, and a 3 by 3 feature map showing convolution.</desc>
+  <rect width="900" height="560" fill="#f8fafc"/>
+  <text x="110" y="56" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#111827">入力画像</text>
+  <text x="408" y="56" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#111827">フィルタ</text>
+  <text x="672" y="56" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#111827">特徴マップ</text>
+
+  <g transform="translate(70 95)">
+    <rect x="-10" y="-10" width="270" height="270" rx="14" fill="#ffffff" stroke="#d1d5db"/>
+    <g font-family="Arial, sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle">
+      <rect x="0" y="0" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="25" y="25" fill="#374151">0</text>
+      <rect x="50" y="0" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="75" y="25" fill="#374151">0</text>
+      <rect x="100" y="0" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="125" y="25" fill="#1e3a8a">1</text>
+      <rect x="150" y="0" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="175" y="25" fill="#1e3a8a">1</text>
+      <rect x="200" y="0" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="225" y="25" fill="#374151">0</text>
+
+      <rect x="0" y="50" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="25" y="75" fill="#374151">0</text>
+      <rect x="50" y="50" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="75" y="75" fill="#1e3a8a">1</text>
+      <rect x="100" y="50" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="125" y="75" fill="#1e3a8a">1</text>
+      <rect x="150" y="50" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="175" y="75" fill="#1e3a8a">1</text>
+      <rect x="200" y="50" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="225" y="75" fill="#374151">0</text>
+
+      <rect x="0" y="100" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="25" y="125" fill="#374151">0</text>
+      <rect x="50" y="100" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="75" y="125" fill="#1e3a8a">1</text>
+      <rect x="100" y="100" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="125" y="125" fill="#1e3a8a">1</text>
+      <rect x="150" y="100" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="175" y="125" fill="#1e3a8a">1</text>
+      <rect x="200" y="100" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="225" y="125" fill="#374151">0</text>
+
+      <rect x="0" y="150" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="25" y="175" fill="#374151">0</text>
+      <rect x="50" y="150" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="75" y="175" fill="#1e3a8a">1</text>
+      <rect x="100" y="150" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="125" y="175" fill="#1e3a8a">1</text>
+      <rect x="150" y="150" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="175" y="175" fill="#1e3a8a">1</text>
+      <rect x="200" y="150" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="225" y="175" fill="#374151">0</text>
+
+      <rect x="0" y="200" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="25" y="225" fill="#374151">0</text>
+      <rect x="50" y="200" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="75" y="225" fill="#374151">0</text>
+      <rect x="100" y="200" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="125" y="225" fill="#1e3a8a">1</text>
+      <rect x="150" y="200" width="50" height="50" fill="#bfdbfe" stroke="#2563eb"/><text x="175" y="225" fill="#1e3a8a">1</text>
+      <rect x="200" y="200" width="50" height="50" fill="#e5e7eb" stroke="#9ca3af"/><text x="225" y="225" fill="#374151">0</text>
+    </g>
+    <rect x="50" y="50" width="150" height="150" fill="none" stroke="#f97316" stroke-width="6" rx="6"/>
+    <text x="125" y="295" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#9a3412">3x3の範囲を見る</text>
+  </g>
+
+  <g transform="translate(380 145)">
+    <rect x="-12" y="-12" width="186" height="186" rx="14" fill="#ffffff" stroke="#d1d5db"/>
+    <g font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" dominant-baseline="middle">
+      <rect x="0" y="0" width="54" height="54" fill="#fee2e2" stroke="#ef4444"/><text x="27" y="27" fill="#991b1b">-1</text>
+      <rect x="54" y="0" width="54" height="54" fill="#f3f4f6" stroke="#9ca3af"/><text x="81" y="27" fill="#374151">0</text>
+      <rect x="108" y="0" width="54" height="54" fill="#dcfce7" stroke="#22c55e"/><text x="135" y="27" fill="#166534">1</text>
+      <rect x="0" y="54" width="54" height="54" fill="#fee2e2" stroke="#ef4444"/><text x="27" y="81" fill="#991b1b">-1</text>
+      <rect x="54" y="54" width="54" height="54" fill="#f3f4f6" stroke="#9ca3af"/><text x="81" y="81" fill="#374151">0</text>
+      <rect x="108" y="54" width="54" height="54" fill="#dcfce7" stroke="#22c55e"/><text x="135" y="81" fill="#166534">1</text>
+      <rect x="0" y="108" width="54" height="54" fill="#fee2e2" stroke="#ef4444"/><text x="27" y="135" fill="#991b1b">-1</text>
+      <rect x="54" y="108" width="54" height="54" fill="#f3f4f6" stroke="#9ca3af"/><text x="81" y="135" fill="#374151">0</text>
+      <rect x="108" y="108" width="54" height="54" fill="#dcfce7" stroke="#22c55e"/><text x="135" y="135" fill="#166534">1</text>
+    </g>
+    <text x="81" y="210" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#374151">縦のエッジに反応</text>
+  </g>
+
+  <path d="M330 220 H360" stroke="#64748b" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M570 220 H625" stroke="#64748b" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <g transform="translate(650 145)">
+    <rect x="-12" y="-12" width="216" height="216" rx="14" fill="#ffffff" stroke="#d1d5db"/>
+    <g font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" dominant-baseline="middle">
+      <rect x="0" y="0" width="64" height="64" fill="#e0f2fe" stroke="#0284c7"/><text x="32" y="32" fill="#0c4a6e">2</text>
+      <rect x="64" y="0" width="64" height="64" fill="#bae6fd" stroke="#0284c7"/><text x="96" y="32" fill="#0c4a6e">3</text>
+      <rect x="128" y="0" width="64" height="64" fill="#f1f5f9" stroke="#94a3b8"/><text x="160" y="32" fill="#475569">0</text>
+      <rect x="0" y="64" width="64" height="64" fill="#e0f2fe" stroke="#0284c7"/><text x="32" y="96" fill="#0c4a6e">2</text>
+      <rect x="64" y="64" width="64" height="64" fill="#bae6fd" stroke="#0284c7"/><text x="96" y="96" fill="#0c4a6e">3</text>
+      <rect x="128" y="64" width="64" height="64" fill="#f1f5f9" stroke="#94a3b8"/><text x="160" y="96" fill="#475569">0</text>
+      <rect x="0" y="128" width="64" height="64" fill="#e0f2fe" stroke="#0284c7"/><text x="32" y="160" fill="#0c4a6e">1</text>
+      <rect x="64" y="128" width="64" height="64" fill="#bae6fd" stroke="#0284c7"/><text x="96" y="160" fill="#0c4a6e">2</text>
+      <rect x="128" y="128" width="64" height="64" fill="#f1f5f9" stroke="#94a3b8"/><text x="160" y="160" fill="#475569">0</text>
+    </g>
+    <text x="96" y="238" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#374151">強く反応した場所が明るい</text>
+  </g>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>
