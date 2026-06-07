@@ -237,10 +237,105 @@ layout: section
 
 ::default::
 
+<span class="font-bold text-2xl">https://trial-class.micanis.dev/13</span>と検索してください
+
 以下のリンクをクリックしてColabを開いてください
 
 <div class=" my-8">
   <a href="https://colab.research.google.com/github/micanis/trial_class/blob/main/code/dot_ipynbs/experience.ipynb" target="_blank" class="text-2xl underline text-blue-600">
+    Colabで開く
+  </a>
+</div>
+
+1. 上のリンクをクリック
+2. 「ドライブにコピー」で自分のアカウントに保存（任意）
+3. 上から順にセルを実行していく
+
+---
+layout: section
+---
+
+# CNNの仕組み
+
+---
+layout: two-cols
+---
+
+::title::
+畳み込みニューラルネットワーク (CNN)
+
+::left::
+**CNNとは？**
+
+<div class="ml-2">
+<carbon-arrow-right class="mr-2" />画像認識に特化したニューラルネットワーク
+</div>
+
+**なぜ画像に強いのか？**
+- 局所的なパターンを検出できる
+- 位置がずれても認識できる
+- 層を重ねて複雑な特徴を学習
+
+::right::
+<div class="h-full flex flex-col items-center justify-center">
+<div class="text-sm bg-gray-50 p-4 rounded">
+
+```
+入力画像 (28x28)
+    ↓
+[畳み込み層] → 特徴抽出
+    ↓
+[プーリング層] → 情報圧縮
+    ↓
+  (繰り返し)
+    ↓
+[全結合層] → 分類
+    ↓
+出力 (0-9の確率)
+```
+</div>
+</div>
+
+---
+layout: two-cols
+---
+
+::title::
+畳み込み (Convolution)
+
+::left::
+**畳み込みとは？**
+
+<div class="ml-2">
+<carbon-arrow-right class="mr-2" />小さなフィルタを画像上でスライドさせて特徴を抽出
+</div>
+
+**フィルタの役割**
+- エッジ（輪郭）を検出
+- 特定のパターンを見つける
+
+**学習するもの**
+- フィルタの値は自動で学習される
+- 浅い層: エッジ、色
+- 深い層: 目、耳、顔全体
+
+::right::
+<figure class="h-full flex flex-col items-center justify-center">
+  <img src="./assets/img006.png" class="h-3/4"/>
+  <figcaption class="text-sm text-gray-600 mt-2">図6 畳み込みの様子</figcaption>
+</figure>
+
+---
+
+::title::
+CNNを実装してみよう (Google Colab)
+
+::default::
+
+以下のリンクをクリックしてColabを開いてください
+
+<div class="my-8">
+  <a href="https://colab.research.google.com/github/{owner}/{repo}/blob/main/code/dot_ipynbs/cnn.ipynb" target="_blank" class="text-2xl underline text-blue-600">
     Colabで開く
   </a>
 </div>
