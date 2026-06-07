@@ -334,7 +334,7 @@ layout: section
 
 ::default::
 
-<span class="font-bold text-2xl">https://trial-class.micanis.dev/16</span>と検索してください
+<span class="font-bold text-2xl">https://trial-class.vercel.dev/16</span>と検索してください
 
 以下のリンクをクリックしてColabを開いてください
 
