@@ -1,0 +1,22 @@
+:root {
+  --slide-bg: #f1f5f9; /* Tailwind slate-100 */
+}
+
+.slidev-layout {
+  background-color: var(--slide-bg);
+  color: #171717; /* neutral-900 */
+  font-family: "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+}
+
+.slidev-layout code,
+.slidev-layout pre {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.slidev-layout.visual-only {
+  padding: 0 !important;
+}
+
+.image-pixelated {
+  image-rendering: pixelated;
+}
