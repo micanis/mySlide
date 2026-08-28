@@ -120,10 +120,10 @@ layout: default
       <p class="text-2xl font-bold leading-relaxed text-neutral-900">人がどんな姿勢かを見つける</p>
       <p class="mt-5 text-lg leading-relaxed text-neutral-800">
         鼻　肩　ひじ　手首　ひざなどを<br>
-        33個のランドマークとして検出します
+        17個のキーポイントとして検出します
       </p>
       <div class="mt-9 border-l-2 border-neutral-500 pl-5 text-base leading-relaxed text-neutral-700">
-        体の特徴を表す点をランドマーク<br>
+        体の特徴を表す点をキーポイント<br>
         点を結んだ線をスケルトンと呼びます
       </div>
     </div>
@@ -151,9 +151,9 @@ layout: default
         <p class="mt-2 text-sm leading-relaxed text-neutral-700">画像のどこに人がいるかを先に探す</p>
       </div>
       <div class="border border-neutral-500 bg-neutral-100 p-5">
-        <div class="text-xs font-mono text-neutral-600">02 / LANDMARK</div>
-        <p class="mt-3 text-lg font-bold text-neutral-900">33個の点を予測する</p>
-        <p class="mt-2 text-sm leading-relaxed text-neutral-700">鼻や肩などのX Y Z座標を求める</p>
+        <div class="text-xs font-mono text-neutral-600">02 / KEYPOINT</div>
+        <p class="mt-3 text-lg font-bold text-neutral-900">17個の点を予測する</p>
+        <p class="mt-2 text-sm leading-relaxed text-neutral-700">鼻や肩などのX Y座標と確信度を求める</p>
       </div>
       <div class="border border-neutral-500 bg-neutral-100 p-5">
         <div class="text-xs font-mono text-neutral-600">03 / CONNECT</div>
@@ -164,7 +164,7 @@ layout: default
     <div class="mt-5 min-h-0 flex-1 grid place-items-center">
       <img src="/images/ultralytics-pose.webp" alt="姿勢推定で腕の関節を結んだ例" class="h-[170px] w-[82%] object-contain" />
     </div>
-    <p class="mt-2 text-center text-xs text-neutral-600">MediaPipe Pose Landmarkerは画像座標と3次元座標を返します</p>
+    <p class="mt-2 text-center text-xs text-neutral-100">YOLO Poseは画像内にいる複数人のキーポイントをまとめて検出します</p>
   </div>
 </div>
 
@@ -179,7 +179,7 @@ layout: default
       <div class="text-xs font-mono tracking-widest text-neutral-600">NOTEBOOK / SECOND HALF</div>
       <p class="mt-4 text-2xl font-bold leading-relaxed text-neutral-900">姿勢推定のセルを実行</p>
       <div class="mt-7 space-y-4 text-base leading-relaxed text-neutral-800">
-        <div><span class="mr-4 font-mono text-neutral-600">01</span>MediaPipeモデルを読み込む</div>
+        <div><span class="mr-4 font-mono text-neutral-600">01</span>YOLO Poseモデルを読み込む</div>
         <div><span class="mr-4 font-mono text-neutral-600">02</span>点と線を画像へ表示</div>
         <div><span class="mr-4 font-mono text-neutral-600">03</span>関節座標の形を確認</div>
       </div>
@@ -189,9 +189,9 @@ layout: default
       </p>
     </div>
     <div class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">MEDIAPIPE POSE LANDMARKER</div>
-      <pre class="mt-5 whitespace-pre-wrap text-sm leading-relaxed text-neutral-900">options = vision.PoseLandmarkerOptions(&#10;    base_options=python.BaseOptions(&#10;        model_asset_path=MODEL_PATH&#10;    ),&#10;    num_poses=4&#10;)&#10;&#10;with vision.PoseLandmarker.create_from_options(options) as landmarker:&#10;    result = landmarker.detect(mp_image)&#10;&#10;print(len(result.pose_landmarks[0]))&#10;# 33</pre>
-      <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker/python" target="_blank" class="mt-5 text-xs text-neutral-600 underline">MediaPipe Pose Landmarker documentation</a>
+      <div class="text-xs font-mono tracking-widest text-neutral-600">YOLO26 POSE / MULTI-PERSON</div>
+      <pre class="mt-5 whitespace-pre-wrap text-sm leading-relaxed text-neutral-900">model = YOLO(&quot;yolo26m-pose.pt&quot;)&#10;&#10;result = model.predict(&#10;    image,&#10;    imgsz=960,&#10;    conf=0.25&#10;)[0]&#10;&#10;print(result.keypoints.data.shape)&#10;# 人数 × 17 × 3</pre>
+      <a href="https://docs.ultralytics.com/tasks/pose/" target="_blank" class="mt-5 text-xs text-neutral-600 underline">Ultralytics Pose documentation</a>
     </div>
   </div>
 </div>

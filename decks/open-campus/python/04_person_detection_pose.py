@@ -22,20 +22,17 @@
 # %% [markdown]
 # ## 1　必要なライブラリ
 #
-# UltralyticsとMediaPipeをColabの実行環境へインストールします
+# UltralyticsをColabの実行環境へインストールします
 
 # %%
-# %pip install -q ultralytics mediapipe
+# %pip install -q ultralytics
 
 from io import BytesIO
 from urllib.request import Request, urlopen
 
 import matplotlib.pyplot as plt
-import mediapipe as mp
 import numpy as np
 from PIL import Image
-from mediapipe.tasks import python
-from mediapipe.tasks.python import vision
 from ultralytics import YOLO
 
 
@@ -68,7 +65,7 @@ plt.show()
 detect_model = YOLO("yolo26n.pt")
 detect_result = detect_model.predict(image, classes=[0], verbose=False)[0]
 
-detect_image = detect_result.plot()[..., ::-1]
+detect_image = detect_result.plot()[...]
 
 plt.figure(figsize=(8, 6))
 plt.imshow(detect_image)
@@ -95,87 +92,53 @@ for index, box in enumerate(detect_result.boxes, start=1):
 
 
 # %% [markdown]
-# ## 5　MediaPipeのモデルをダウンロード
+# ## 5　姿勢推定モデルを読み込む
 #
-# Pose Landmarkerは体の特徴を33個のランドマークとして検出します
+# YOLO Poseは複数人の姿勢を17個のキーポイントとして検出します
 
 # %%
-MODEL_URL = (
-    "https://storage.googleapis.com/mediapipe-models/pose_landmarker/"
-    "pose_landmarker_lite/float16/1/pose_landmarker_lite.task"
-)
-MODEL_PATH = "pose_landmarker_lite.task"
-
-request = Request(MODEL_URL, headers={"User-Agent": "Mozilla/5.0"})
-with urlopen(request) as response, open(MODEL_PATH, "wb") as model_file:
-    model_file.write(response.read())
+pose_model = YOLO("yolo26m-pose.pt")
 
 
 # %% [markdown]
 # ## 6　姿勢を推定
 #
-# `num_poses=4` は最大4人まで姿勢を探す指定です
+# 入力サイズを大きくして画像内の小さな人物も探します
 
 # %%
-options = vision.PoseLandmarkerOptions(
-    base_options=python.BaseOptions(
-        model_asset_path=MODEL_PATH,
-        delegate=python.BaseOptions.Delegate.CPU,
-    ),
-    running_mode=vision.RunningMode.IMAGE,
-    num_poses=4,
-)
+pose_result = pose_model.predict(
+    image,
+    imgsz=960,
+    conf=0.25,
+    verbose=False,
+)[0]
 
-mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=image)
-
-with vision.PoseLandmarker.create_from_options(options) as landmarker:
-    pose_result = landmarker.detect(mp_image)
+print(f"姿勢を検出した人数: {pose_result.keypoints.data.shape[0]}")
 
 
 # %% [markdown]
-# ## 7　ランドマークを表示
+# ## 7　キーポイントを表示
 #
-# 33個の点を決められた組み合わせで結びます
+# 複数人の17個の点を決められた組み合わせで結びます
 
 # %%
-height, width = image.shape[:2]
-connections = vision.PoseLandmarksConnections.POSE_LANDMARKS
+pose_image = pose_result.plot()[...]
 
-fig, ax = plt.subplots(figsize=(8, 6))
-ax.imshow(image)
-
-for landmarks in pose_result.pose_landmarks:
-    x = [landmark.x * width for landmark in landmarks]
-    y = [landmark.y * height for landmark in landmarks]
-
-    for connection in connections:
-        ax.plot(
-            [x[connection.start], x[connection.end]],
-            [y[connection.start], y[connection.end]],
-            color="#84cc16",
-            linewidth=2,
-        )
-
-    ax.scatter(x, y, s=18, color="#ec4899")
-
-ax.axis("off")
+plt.figure(figsize=(8, 6))
+plt.imshow(pose_image)
+plt.axis("off")
 plt.show()
 
 
 # %% [markdown]
-# ## 8　ランドマークの座標を確認
+# ## 8　キーポイントの座標を確認
 #
-# 結果は `(人数 33 3)` の配列です
-# 最後の3つの値がX座標 Y座標 Z座標です
+# 結果は `(人数 17 3)` の配列です
+# 最後の3つの値がX座標 Y座標 確信度です
 
 # %%
-landmark_array = np.array(
-    [
-        [[landmark.x, landmark.y, landmark.z] for landmark in landmarks]
-        for landmarks in pose_result.pose_landmarks
-    ]
-)
+keypoint_array = pose_result.keypoints.data.cpu().numpy()
 
-print(f"ランドマーク座標の形: {landmark_array.shape}")
-if len(landmark_array) > 0:
-    print("1人目の鼻の座標:", landmark_array[0, 0])
+print(f"キーポイント座標の形: {keypoint_array.shape}")
+if len(keypoint_array) > 0:
+    print("1人目の鼻 [X Y confidence]:", keypoint_array[0, 0])
