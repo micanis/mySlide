@@ -22,19 +22,10 @@
 # %% [markdown]
 # ## 1　必要なライブラリ
 #
-# 初回だけUltralyticsとMediaPipeをインストールします
+# UltralyticsとMediaPipeをColabの実行環境へインストールします
 
 # %%
-import importlib.util
-import subprocess
-import sys
-
-if importlib.util.find_spec("ultralytics") is None:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", "ultralytics"])
-if importlib.util.find_spec("mediapipe") is None:
-    subprocess.check_call(
-        [sys.executable, "-m", "pip", "install", "-q", "mediapipe==0.10.21"]
-    )
+# %pip install -q ultralytics mediapipe
 
 from io import BytesIO
 from urllib.request import Request, urlopen

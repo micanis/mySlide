@@ -99,7 +99,7 @@ layout: default
         <div><span class="mr-4 font-mono text-neutral-600">02</span>人物だけを検出</div>
         <div><span class="mr-4 font-mono text-neutral-600">03</span>人数と確信度を確認</div>
       </div>
-      <a href="https://colab.research.google.com/github/" target="_blank" class="mt-8 inline-block border border-neutral-500 bg-neutral-100 px-5 py-4 text-center font-bold text-neutral-900 no-underline">Google Colabを開く</a>
+      <a href="https://colab.research.google.com/github/micanis-dev/open-campus/blob/main/python/04_person_detection_pose.ipynb" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block border border-neutral-500 bg-neutral-100 px-5 py-4 text-center font-bold text-neutral-900 no-underline">Google Colabを開く</a>
     </div>
     <div class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-6">
       <div class="text-xs font-mono tracking-widest text-neutral-600">PERSON DETECTION</div>

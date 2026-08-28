@@ -23,11 +23,11 @@ uv run jupytext --to ipynb 04_person_detection_pose.py -o 04_person_detection_po
 ```
 
 Google Colabで開くのは生成された `.ipynb` ファイルです
-GitHubへ公開した後の直接URLは次の形になります
+GitHubへ公開したNotebookは次のURLから直接開けます
 
 ```text
-https://colab.research.google.com/github/<owner>/<repository>/blob/<branch>/python/03_image_processing.ipynb
+https://colab.research.google.com/github/micanis-dev/open-campus/blob/main/python/03_image_processing.ipynb
+https://colab.research.google.com/github/micanis-dev/open-campus/blob/main/python/04_person_detection_pose.ipynb
 ```
 
-現在のディレクトリにはGitリモートがないため
-Slidevでは `https://colab.research.google.com/github/` へリンクしています
+リポジトリ名やブランチ名を変更した場合は、Slidev内のリンクも同じ値へ変更します

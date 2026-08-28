@@ -25,7 +25,7 @@ layout: default
         ブラウザの中だけで実習します
       </p>
     </div>
-    <a href="https://colab.research.google.com/github/" target="_blank" class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-8 no-underline">
+    <a href="https://colab.research.google.com/github/micanis-dev/open-campus/blob/main/python/03_image_processing.ipynb" target="_blank" rel="noopener noreferrer" class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-8 no-underline">
       <div class="text-xs font-mono tracking-widest text-neutral-600">OPEN IN COLAB</div>
       <div class="mt-6 text-3xl font-bold leading-relaxed text-neutral-900">クリックして<br>実習をはじめる</div>
       <div class="mt-8 border-t border-neutral-500 pt-5 text-sm leading-relaxed text-neutral-700">
