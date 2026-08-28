@@ -19,7 +19,7 @@ layout: default
   </p>
   <div class="mt-8 min-h-0 flex-1 grid place-items-center">
     <img
-      src="/images/what-is-cv.png"
+      src="/images/what-is-cv.webp"
       alt="人の視覚とコンピュータビジョンを比較した図"
       class="max-h-full w-[92%] object-contain"
     />
@@ -46,7 +46,7 @@ layout: default
     </div>
     <div class="min-h-0 grid place-items-center">
       <img
-        src="/images/what-is-person-detection.png"
+        src="/images/what-is-person-detection.webp"
         alt="複数の人物を四角形で囲んだ人物検出結果"
         class="max-h-full w-auto object-contain"
       />
@@ -129,7 +129,7 @@ layout: default
     </div>
     <div class="min-h-0 grid place-items-center">
       <img
-        src="/images/what-is-pose-estimation.png"
+        src="/images/what-is-pose-estimation.webp"
         alt="人物の関節を点と線で表した姿勢推定結果"
         class="max-h-full w-auto object-contain"
       />

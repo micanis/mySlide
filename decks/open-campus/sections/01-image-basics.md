@@ -19,7 +19,7 @@ layout: default
   </p>
   <div class="min-h-0 flex-1 grid place-items-center">
     <img
-      src="/images/digital-img-grayscale.png"
+      src="/images/digital-img-grayscale.webp"
       alt="グレースケールのデジタル画像"
       class="max-h-full w-[84%] object-contain"
     />
@@ -38,7 +38,7 @@ layout: default
   </p>
   <div class="min-h-0 flex-1 grid place-items-center">
     <img
-      src="/images/digital-img-rgb.png"
+      src="/images/digital-img-rgb.webp"
       alt="カラー画像をRGBチャンネルに分解した図"
       class="max-h-full w-[84%] object-contain"
     />
@@ -57,7 +57,7 @@ layout: default
   </p>
   <div class="min-h-0 flex-1 grid place-items-center">
     <img
-      src="/images/img-for-program.png"
+      src="/images/img-for-program.webp"
       alt="プログラム上で座標を持つピクセルの図"
       class="max-h-full w-[84%] object-contain"
     />
@@ -84,7 +84,7 @@ layout: default
     </div>
     <div class="grid place-items-center p-6">
       <img
-        src="/images/video-to-img.png"
+        src="/images/video-to-img.webp"
         alt="動画を構成する連続した静止画"
         class="max-h-full w-[74%] object-contain"
       />

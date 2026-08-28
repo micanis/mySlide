@@ -54,7 +54,7 @@ layout: default
     </div>
     <div class="min-h-0 grid place-items-center">
       <img
-        src="/images/mandrill.png"
+        src="/images/mandrill.webp"
         alt="USC-SIPIのマンドリル標準テスト画像"
         class="h-[380px] w-auto object-contain"
       />
@@ -87,7 +87,7 @@ layout: default
     </div>
     <div class="min-h-0 grid place-items-center">
       <div class="relative h-full max-h-[420px] w-fit">
-        <img src="/images/mandrill.png" alt="左目を囲んだマンドリル画像" class="h-full w-auto object-contain" />
+        <img src="/images/mandrill.webp" alt="左目を囲んだマンドリル画像" class="h-full w-auto object-contain" />
         <div class="absolute left-[22.5%] top-[4.8%] h-[20.5%] w-[21.5%] border-3 border-neutral-900">
           <span class="absolute -top-7 left-0 bg-neutral-100 px-2 py-1 text-xs font-mono text-neutral-900">CROP</span>
         </div>
@@ -114,7 +114,7 @@ layout: default
     <div class="min-h-0 grid place-items-center">
       <div class="border border-neutral-500 bg-neutral-100 p-5">
         <svg viewBox="115 25 110 105" class="h-[300px] w-[315px]" role="img" aria-label="マンドリル画像から切り抜いた左目">
-          <image href="/images/mandrill.png" width="512" height="512" />
+          <image href="/images/mandrill.webp" width="512" height="512" />
         </svg>
         <div class="mt-4 text-center text-xs font-mono tracking-widest text-neutral-600">110 × 105 PIXELS</div>
       </div>
@@ -130,7 +130,7 @@ layout: default
   <h1 class="text-4xl font-bold">3.5 好きな部分を切り抜こう</h1>
   <div class="mt-8 min-h-0 flex-1 grid grid-cols-[1.1fr_.9fr] gap-10">
     <div class="min-h-0 flex items-center gap-7">
-      <img src="/images/mandrill.png" alt="自由に切り抜くマンドリル画像" class="max-h-full w-[46%] object-contain" />
+      <img src="/images/mandrill.webp" alt="自由に切り抜くマンドリル画像" class="max-h-full w-[46%] object-contain" />
       <div class="grid flex-1 grid-cols-2 gap-3 font-mono text-center text-neutral-900">
         <div class="border border-neutral-500 p-4"><span class="block text-xs text-neutral-600">x1</span>_____</div>
         <div class="border border-neutral-500 p-4"><span class="block text-xs text-neutral-600">y1</span>_____</div>

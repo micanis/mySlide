@@ -1,7 +1,13 @@
 node_modules
+.pnpm-store
+.wrangler
 .DS_Store
 dist
 *.local
 .vite-inspect
 .remote-assets
 components.d.ts
+python/.venv
+**/__pycache__
+*.pyc
+slides-review.pdf
