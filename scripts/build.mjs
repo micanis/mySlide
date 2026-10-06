@@ -83,11 +83,16 @@ function createIndex(slides) {
     <title>スライド一覧</title>
     <style>
       :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
-      body { max-width: 48rem; margin: 0 auto; padding: 4rem 1.5rem; }
+      body { max-width: 48rem; margin: 0 auto; padding: 4rem 1.5rem; background: #fff; color: #0f172a; }
       h1 { font-size: 1.75rem; }
       ul { padding: 0; list-style: none; display: grid; gap: .75rem; }
       a { display: block; padding: 1rem 1.25rem; border: 1px solid #d1d5db; border-radius: .5rem; color: inherit; text-decoration: none; }
       a:hover { border-color: #2563eb; color: #1d4ed8; }
+      @media (prefers-color-scheme: dark) {
+        body { background: #0f172a; color: #f8fafc; }
+        a { border-color: #475569; }
+        a:hover { border-color: #93c5fd; color: #bfdbfe; }
+      }
     </style>
   </head>
   <body>

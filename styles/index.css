@@ -5,3 +5,78 @@
  * Use utility classes directly in Markdown / Vue, for example:
  * <div class="rounded-xl bg-blue-600 p-6 text-white">...</div>
  */
+
+/* Slidev's `.dark` class takes priority; otherwise follow the system setting. */
+:root {
+  color-scheme: light dark;
+}
+
+:root.dark,
+.dark {
+  color-scheme: dark;
+}
+
+:where(:root.dark, .dark) .slidev-layout:not(.end),
+.slidev-layout.dark:not(.end) {
+  background: #0f172a;
+}
+
+:where(:root.dark, .dark) .slidev-layout .text-slate-900,
+.slidev-layout.dark .text-slate-900 {
+  color: #f8fafc;
+}
+
+:where(:root.dark, .dark) .slidev-layout .text-slate-600,
+.slidev-layout.dark .text-slate-600 {
+  color: #cbd5e1;
+}
+
+:where(:root.dark, .dark) .slidev-layout .text-blue-700,
+:where(:root.dark, .dark) .slidev-layout .text-blue-600,
+.slidev-layout.dark .text-blue-700,
+.slidev-layout.dark .text-blue-600 {
+  color: #93c5fd;
+}
+
+:where(:root.dark, .dark) .slidev-layout .border-slate-900,
+.slidev-layout.dark .border-slate-900 {
+  border-color: #cbd5e1;
+}
+
+:where(:root.dark, .dark) .slidev-layout .border-slate-300,
+:where(:root.dark, .dark) .slidev-layout .border-slate-200,
+:where(:root.dark, .dark) .slidev-layout .divide-slate-300 > :not(:last-child),
+.slidev-layout.dark .border-slate-300,
+.slidev-layout.dark .border-slate-200,
+.slidev-layout.dark .divide-slate-300 > :not(:last-child) {
+  border-color: #475569;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) .slidev-layout:not(.end) {
+    background: #0f172a;
+  }
+
+  :root:not(.light) .slidev-layout .text-slate-900 {
+    color: #f8fafc;
+  }
+
+  :root:not(.light) .slidev-layout .text-slate-600 {
+    color: #cbd5e1;
+  }
+
+  :root:not(.light) .slidev-layout .text-blue-700,
+  :root:not(.light) .slidev-layout .text-blue-600 {
+    color: #93c5fd;
+  }
+
+  :root:not(.light) .slidev-layout .border-slate-900 {
+    border-color: #cbd5e1;
+  }
+
+  :root:not(.light) .slidev-layout .border-slate-300,
+  :root:not(.light) .slidev-layout .border-slate-200,
+  :root:not(.light) .slidev-layout .divide-slate-300 > :not(:last-child) {
+    border-color: #475569;
+  }
+}
