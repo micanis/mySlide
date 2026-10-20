@@ -82,7 +82,7 @@ level: 2
 ::column-2::
 
 <figure class="flex h-full flex-col items-center justify-center">
-  <img src="./assets/img001.webp" class="max-h-[360px] object-contain" alt="人物姿勢推定の例">
+  <img src="/images/img001.webp" class="max-h-[360px] object-contain" alt="人物姿勢推定の例">
   <figcaption>図1 人物姿勢推定（引用: Ultralytics）</figcaption>
 </figure>
 
@@ -108,7 +108,7 @@ level: 2
 ::column-2::
 
 <figure class="flex h-full flex-col items-center justify-center">
-  <img src="./assets/img002.png" class="max-h-[340px] object-contain" alt="赤・緑・青の層が重なって画像になる様子">
+  <img src="/images/img002.png" class="max-h-[340px] object-contain" alt="赤・緑・青の層が重なって画像になる様子">
   <figcaption>図2 赤・緑・青の層が重なって画像になる様子</figcaption>
 </figure>
 
@@ -202,7 +202,7 @@ level: 2
 ::column-2::
 
 <figure class="flex h-full flex-col items-center justify-center">
-  <img src="./assets/img003.png" class="max-h-[360px] object-contain" alt="画像分類の例">
+  <img src="/images/img003.png" class="max-h-[360px] object-contain" alt="画像分類の例">
   <figcaption>図3 画像分類の例（引用: Ultralytics）</figcaption>
 </figure>
 
@@ -229,7 +229,7 @@ level: 2
 ::column-2::
 
 <figure class="flex h-full flex-col items-center justify-center">
-  <img src="./assets/img004.webp" class="max-h-[360px] object-contain" alt="物体検出の例">
+  <img src="/images/img004.webp" class="max-h-[360px] object-contain" alt="物体検出の例">
   <figcaption>図4 物体検出の例（引用: Ultralytics）</figcaption>
 </figure>
 
@@ -256,7 +256,7 @@ level: 2
 ::column-2::
 
 <figure class="flex h-full flex-col items-center justify-center">
-  <img src="./assets/img005.webp" class="max-h-[360px] object-contain" alt="セグメンテーションの例">
+  <img src="/images/img005.webp" class="max-h-[360px] object-contain" alt="セグメンテーションの例">
   <figcaption>図5 セグメンテーションの例（引用: Ultralytics）</figcaption>
 </figure>
 
