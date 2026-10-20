@@ -1,17 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.17.5/.schema/devbox.schema.json",
   "packages": [
-    "pnpm@latest",
-    "nodejs@latest"
+    "nodejs@24",
+    "pnpm@11.22.0",
+    "uv@0.13.1"
   ],
   "shell": {
-    "init_hook": [
-      "echo 'Welcome to devbox!' > /dev/null"
-    ],
     "scripts": {
-      "test": [
-        "echo \"Error: no test specified\" && exit 1"
-      ]
+      "build": "pnpm run build",
+      "check": "pnpm run check"
     }
   }
 }
