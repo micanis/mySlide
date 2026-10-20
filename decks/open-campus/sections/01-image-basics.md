@@ -14,7 +14,7 @@ level: 2
 デジタル画像は小さな点「ピクセル」の集まり<br>
 グレー画像ではピクセルの明るさを0〜255の数値で表します
 
-<img src="/images/digital-img-grayscale.webp" alt="グレースケールのデジタル画像" class="mx-auto mt-2 block max-h-[340px] max-w-full object-contain">
+<img src="/images/digital-img-grayscale.webp" alt="グレースケールのデジタル画像" class="mx-auto mt-2 block max-h-[380px] max-w-full object-contain">
 
 ---
 title: 1.2 デジタル画像とは（RGB）
@@ -24,7 +24,7 @@ level: 2
 カラー画像では赤・緑・青の3つの数値を組み合わせて<br>
 1つのピクセルの色を表します
 
-<img src="/images/digital-img-rgb.webp" alt="カラー画像をRGBチャンネルに分解した図" class="mx-auto mt-2 block max-h-[340px] max-w-full object-contain">
+<img src="/images/digital-img-rgb.webp" alt="カラー画像をRGBチャンネルに分解した図" class="mx-auto mt-2 block max-h-[380px] max-w-full object-contain">
 
 ---
 title: 1.3 プログラムでの画像
