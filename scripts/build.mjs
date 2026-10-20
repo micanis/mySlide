@@ -1,11 +1,11 @@
-import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { mkdirSync, renameSync, rmSync, writeFileSync } from 'node:fs'
 import { spawnSync } from 'node:child_process'
-import { dirname, relative, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { relative, resolve } from 'node:path'
+import { decksDirectory, findDecks, root } from './decks.mjs'
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const decksDirectory = resolve(root, 'decks')
 const outputDirectory = resolve(root, 'dist')
+// Build into a temporary directory so a failed build never leaves a partial dist/.
+const workDirectory = resolve(root, '.dist-tmp')
 const siteBasePath = normalizeBasePath(process.env.SITE_BASE_PATH ?? '/mySlide/')
 
 // Old public paths that moved. The generated 404.html sends visitors on.
@@ -13,54 +13,34 @@ const redirects = {
   crane_recruiting: 'crane-recruiting',
 }
 
-const decks = findDecks(decksDirectory)
+const decks = findDecks().map(deck => ({ ...deck, basePath: `${siteBasePath}${deck.slug}/` }))
 if (decks.length === 0) {
   throw new Error('No decks were found. Add decks/<name>/slides.md.')
 }
 
-rmSync(outputDirectory, { recursive: true, force: true })
-mkdirSync(outputDirectory, { recursive: true })
+rmSync(workDirectory, { recursive: true, force: true })
+mkdirSync(workDirectory, { recursive: true })
 
 for (const deck of decks) {
   console.log(`Building ${relative(root, deck.directory)} → ${deck.basePath}`)
   const result = spawnSync(
     'pnpm',
-    ['exec', 'slidev', 'build', 'slides.md', '--out', deck.outputPath, '--base', deck.basePath],
+    ['exec', 'slidev', 'build', 'slides.md', '--out', resolve(workDirectory, deck.slug), '--base', deck.basePath],
     { cwd: deck.directory, stdio: 'inherit' },
   )
 
-  if (result.error) throw result.error
-  if (result.status !== 0) process.exit(result.status ?? 1)
+  if (result.error || result.status !== 0) {
+    rmSync(workDirectory, { recursive: true, force: true })
+    if (result.error) throw result.error
+    console.error(`Failed to build ${relative(decksDirectory, deck.directory)}`)
+    process.exit(result.status ?? 1)
+  }
 }
 
-writeFileSync(resolve(outputDirectory, 'index.html'), createIndex(decks), 'utf8')
-writeFileSync(resolve(outputDirectory, '404.html'), createNotFound(decks), 'utf8')
-
-function findDecks(directory) {
-  return readdirSync(directory, { withFileTypes: true })
-    .filter(entry => entry.isDirectory() && !entry.name.startsWith('.'))
-    .map(entry => resolve(directory, entry.name))
-    .filter(deckDirectory => existsSync(resolve(deckDirectory, 'slides.md')))
-    .sort()
-    .map((deckDirectory) => {
-      const slug = relative(directory, deckDirectory)
-      return {
-        directory: deckDirectory,
-        slug,
-        title: getTitle(resolve(deckDirectory, 'slides.md'), slug),
-        outputPath: resolve(outputDirectory, slug),
-        basePath: `${siteBasePath}${slug}/`,
-      }
-    })
-}
-
-function getTitle(sourcePath, fallback) {
-  const source = readFileSync(sourcePath, 'utf8')
-  const headmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? ''
-  const frontmatterTitle = headmatter.match(/^title:\s*["']?(.+?)["']?\s*$/m)
-  const heading = source.match(/^#\s+(.+)$/m)
-  return (frontmatterTitle?.[1] ?? heading?.[1] ?? fallback).replace(/<br\s*\/?>/g, ' ').trim()
-}
+writeFileSync(resolve(workDirectory, 'index.html'), createIndex(decks), 'utf8')
+writeFileSync(resolve(workDirectory, '404.html'), createNotFound(decks), 'utf8')
+rmSync(outputDirectory, { recursive: true, force: true })
+renameSync(workDirectory, outputDirectory)
 
 function normalizeBasePath(path) {
   return `/${path.replace(/^\/+|\/+$/g, '')}/`.replace('//', '/')
@@ -119,9 +99,9 @@ function createNotFound(decks) {
         const decks = ${JSON.stringify(Object.fromEntries([...decks.map(({ slug }) => [slug, slug]), ...Object.entries(redirects)]))}
         const { pathname, hash } = location
         if (!pathname.startsWith(base)) return
-        const [first, ...rest] = pathname.slice(base.length).split('/')
+        const [first, ...rest] = pathname.slice(base.length).split('/').filter(Boolean)
         const deck = decks[first]
-        if (deck) location.replace(base + deck + '/' + (hash || (rest.join('/') ? '#/' + rest.join('/') : '')))
+        if (deck) location.replace(base + deck + '/' + (hash || (rest.length ? '#/' + rest.join('/') : '')))
       })()
     </script>
     <style>

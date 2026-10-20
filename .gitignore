@@ -1,8 +1,19 @@
+# Node / Slidev
 node_modules
 .pnpm-store
-.DS_Store
 dist
+.dist-tmp
 *.local
 .vite-inspect
 .remote-assets
 components.d.ts
+
+# Python (decks/*/python)
+.venv
+__pycache__/
+*.py[oc]
+*.egg-info
+.ipynb_checkpoints
+
+# OS
+.DS_Store

@@ -11,6 +11,15 @@ importers:
       playwright-chromium:
         specifier: ^1.56.0
         version: 1.64.1
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+      vue-tsc:
+        specifier: ^3.3.13
+        version: 3.3.13(typescript@5.9.3)
+      yaml:
+        specifier: ^2.9.1
+        version: 2.9.1
 
   decks/crane-recruiting:
     dependencies:
@@ -34,10 +43,10 @@ importers:
         version: 314.0.7
       slidev-theme-micanis:
         specifier: github:micanis/slidev-theme-micanis#v1.0.2
-        version: https://codeload.github.com/micanis/slidev-theme-micanis/tar.gz/d5d7303f540448220567095820e7839fbb17555e(vue@3.5.43(typescript@6.0.3))
+        version: https://codeload.github.com/micanis/slidev-theme-micanis/tar.gz/d5d7303f540448220567095820e7839fbb17555e(vue@3.5.43(typescript@5.9.3))
       vue:
         specifier: ^3.5.33
-        version: 3.5.43(typescript@6.0.3)
+        version: 3.5.43(typescript@5.9.3)
 
   decks/trial-class:
     dependencies:
@@ -46,10 +55,10 @@ importers:
         version: 53.0.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.152.0)(@types/markdown-it@14.2.0)(@types/node@22.20.5)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.3.0)(cac@7.0.0)(srvx@1.0.5)(vite@8.3.2(@types/node@22.20.5)(jiti@2.7.0)(yaml@2.9.1)))(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(lightningcss@1.33.0)(markdown-it@14.3.2)(oxc-parser@0.150.0)(playwright-chromium@1.64.1)(postcss@8.5.28)(rolldown@1.2.12)(srvx@1.0.5)
       slidev-theme-micanis:
         specifier: github:micanis/slidev-theme-micanis#v1.0.2
-        version: https://codeload.github.com/micanis/slidev-theme-micanis/tar.gz/d5d7303f540448220567095820e7839fbb17555e(vue@3.5.43(typescript@6.0.3))
+        version: https://codeload.github.com/micanis/slidev-theme-micanis/tar.gz/d5d7303f540448220567095820e7839fbb17555e(vue@3.5.43(typescript@5.9.3))
       vue:
         specifier: ^3.5.33
-        version: 3.5.43(typescript@6.0.3)
+        version: 3.5.43(typescript@5.9.3)
 
 packages:
 
@@ -983,6 +992,14 @@ packages:
   '@volar/source-map@2.4.28':
     resolution: {integrity: sha512-yX2BDBqJkRXfKw8my8VarTyjv48QwxdJtvRgUpNE5erCsgEUdI2DsLbpa+rOQVAJYshY99szEcRDmyHbF10ggQ==}
 
+  '@volar/typescript@2.4.28':
+    resolution: {integrity: sha512-Ja6yvWrbis2QtN4ClAKreeUZPVYMARDYZl9LMEv1iQ1QdepB6wn0jTRxA9MftYmYa4DQ4k/DaSZpFPUfxl8giw==}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   '@vue-macros/common@3.1.4':
     resolution: {integrity: sha512-/5Fv+6DgIcM9ajY05ZmKBv+LMX1M9A0X+IUwDRVdt67ciw8OV9bvG2r34p3RiEadlsQybjhKPRKNXDC8Bp23cw==}
     engines: {node: '>=20.19.0'}
@@ -1031,6 +1048,9 @@ packages:
 
   '@vue/language-core@3.3.12':
     resolution: {integrity: sha512-k7uIKR0n4CBidk233y7cac9osnDQ5WRidTl6nsrNvpZ3nf8cx9iJxRVsRzVsoPRHbowT/iKgGMTS9RGov3jeIA==}
+
+  '@vue/language-core@3.3.13':
+    resolution: {integrity: sha512-axA0Xemn5LuUKuKWob0/kVq7xQ2mJJM6VqA9Exvt35nM9yRC31goWVve/G/Zb2ZCLsXC8FHYjjfXlnshknSCew==}
 
   '@vue/reactivity@3.5.43':
     resolution: {integrity: sha512-G/c9GyOZNI2jVaaS6OX1EF1SSFSv7H0ERqNTl4+DTFMlZmB5eVAB53aLQNam/7NL2NPtaDD7RdVrzf8uJzMuOA==}
@@ -2656,6 +2676,11 @@ packages:
   type-level-regexp@0.1.17:
     resolution: {integrity: sha512-wTk4DH3cxwk196uGLK/E9pE45aLfeKJacKmcEgEOA/q5dnPGNxXt0cfYdFxb57L+sEpf1oJH4Dnx/pnRcku9jg==}
 
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   typescript@6.0.3:
     resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
@@ -2919,6 +2944,9 @@ packages:
       vite:
         optional: true
 
+  vscode-uri@3.2.0:
+    resolution: {integrity: sha512-m2gXo3bn0G1kT9InzMf07fTbqMbGtyckj3bH5ktLO+1Ssv+yiATZ4dhwaQv9UZWxJh6E9IFGnQyjgWVDWVBDrg==}
+
   vue-router@5.3.1:
     resolution: {integrity: sha512-GDBZzgmILxA/kFnkFbJjQZdZ2QQbngnIMMuoUcjhZIfH1RGMaPjPwX5ASnV38qamuA9uhO0RDjSBHTDNG2uXyQ==}
     peerDependencies:
@@ -2936,6 +2964,12 @@ packages:
         optional: true
       vite:
         optional: true
+
+  vue-tsc@3.3.13:
+    resolution: {integrity: sha512-jE4/bXdOMSHVxEGgQCqNllJy+9N3Gx6tfSAsg0yhFK/MAN6eXqISihupnDEKSCt12VVnjN2gI3AqLYcqoh5x/A==}
+    hasBin: true
+    peerDependencies:
+      typescript: '>=5.0.0'
 
   vue@3.5.43:
     resolution: {integrity: sha512-o5qZoksdnjIKvW1srZ3ab7pcDNYAerBjRe54D0LBLfRdCYFrSgBHVXokMas35czQc0//lmx4/tuY4ZNQ+Rf2Ng==}
@@ -4311,6 +4345,14 @@ snapshots:
 
   '@volar/source-map@2.4.28': {}
 
+  '@volar/typescript@2.4.28(typescript@5.9.3)':
+    dependencies:
+      '@volar/language-core': 2.4.28
+      path-browserify: 1.0.1
+      vscode-uri: 3.2.0
+    optionalDependencies:
+      typescript: 5.9.3
+
   '@vue-macros/common@3.1.4(vue@3.5.43(typescript@6.0.3))':
     dependencies:
       '@vue/compiler-sfc': 3.5.43
@@ -4394,6 +4436,16 @@ snapshots:
   '@vue/devtools-shared@8.2.1': {}
 
   '@vue/language-core@3.3.12':
+    dependencies:
+      '@volar/language-core': 2.4.28
+      '@vue/compiler-dom': 3.5.43
+      '@vue/shared': 3.5.43
+      alien-signals: 3.2.1
+      muggle-string: 0.4.1
+      path-browserify: 1.0.1
+      picomatch: 4.0.7
+
+  '@vue/language-core@3.3.13':
     dependencies:
       '@volar/language-core': 2.4.28
       '@vue/compiler-dom': 3.5.43
@@ -6045,6 +6097,13 @@ snapshots:
 
   sisteransi@1.0.5: {}
 
+  slidev-theme-micanis@https://codeload.github.com/micanis/slidev-theme-micanis/tar.gz/d5d7303f540448220567095820e7839fbb17555e(vue@3.5.43(typescript@5.9.3)):
+    dependencies:
+      class-variance-authority: 0.7.1
+      clsx: 2.1.1
+      tailwind-merge: 3.7.0
+      vue: 3.5.43(typescript@5.9.3)
+
   slidev-theme-micanis@https://codeload.github.com/micanis/slidev-theme-micanis/tar.gz/d5d7303f540448220567095820e7839fbb17555e(vue@3.5.43(typescript@6.0.3)):
     dependencies:
       class-variance-authority: 0.7.1
@@ -6160,6 +6219,8 @@ snapshots:
       - supports-color
 
   type-level-regexp@0.1.17: {}
+
+  typescript@5.9.3: {}
 
   typescript@6.0.3: {}
 
@@ -6455,6 +6516,8 @@ snapshots:
     optionalDependencies:
       vite: 8.3.2(@types/node@22.20.5)(jiti@2.7.0)(yaml@2.9.1)
 
+  vscode-uri@3.2.0: {}
+
   vue-router@5.3.1(@vue/compiler-sfc@3.5.43)(rolldown@1.2.12)(vite@8.3.2(@types/node@22.20.5)(jiti@2.7.0)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3)):
     dependencies:
       '@vue-macros/common': 3.1.4(vue@3.5.43(typescript@6.0.3))
@@ -6487,6 +6550,22 @@ snapshots:
       - rollup
       - unloader
       - webpack
+
+  vue-tsc@3.3.13(typescript@5.9.3):
+    dependencies:
+      '@volar/typescript': 2.4.28(typescript@5.9.3)
+      '@vue/language-core': 3.3.13
+      typescript: 5.9.3
+
+  vue@3.5.43(typescript@5.9.3):
+    dependencies:
+      '@vue/compiler-dom': 3.5.43
+      '@vue/compiler-sfc': 3.5.43
+      '@vue/runtime-dom': 3.5.43
+      '@vue/server-renderer': 3.5.43
+      '@vue/shared': 3.5.43
+    optionalDependencies:
+      typescript: 5.9.3
 
   vue@3.5.43(typescript@6.0.3):
     dependencies:
