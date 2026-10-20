@@ -3,7 +3,7 @@
 
 # %%
 # 今回使うツールをインストール
-!pip install ultralytics
+# !pip install ultralytics
 
 # %%
 # PCからAIに見せたい画像をアップロード

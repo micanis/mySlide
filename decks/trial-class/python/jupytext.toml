@@ -1,0 +1,2 @@
+# dot_pys/*.py（編集元）と dot_ipynbs/*.ipynb（Colab 用）をペアにする
+formats = "dot_ipynbs///ipynb,dot_pys///py:percent"

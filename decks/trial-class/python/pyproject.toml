@@ -1,10 +1,22 @@
 [project]
-name = "code"
+name = "trial-class-python"
 version = "0.1.0"
-description = "Add your description here"
+description = "体験授業「コンピュータビジョンの3大タスクを体験する」で使う Notebook と補助スクリプト"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.13"
 dependencies = [
     "numpy>=2.4.6",
     "pillow>=12.2.0",
+]
+
+[dependency-groups]
+# Notebook の中身をローカルで動かすときに使う（Colab では不要）
+notebooks = [
+    "matplotlib>=3.10",
+    "scipy>=1.15",
+    "tensorflow>=2.20",
+    "ultralytics>=8.4",
+]
+dev = [
+    "jupytext>=1.19.5",
 ]
