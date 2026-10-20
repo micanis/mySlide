@@ -24,6 +24,18 @@ importers:
         specifier: ^3.5.33
         version: 3.5.43(typescript@6.0.3)
 
+  decks/trial-class:
+    dependencies:
+      '@slidev/cli':
+        specifier: ^53.0.0
+        version: 53.0.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.152.0)(@types/markdown-it@14.2.0)(@types/node@22.20.5)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.3.0)(cac@7.0.0)(srvx@1.0.5)(vite@8.3.2(@types/node@22.20.5)(jiti@2.7.0)(yaml@2.9.1)))(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(lightningcss@1.33.0)(markdown-it@14.3.2)(oxc-parser@0.150.0)(playwright-chromium@1.64.1)(postcss@8.5.28)(rolldown@1.2.12)(srvx@1.0.5)
+      slidev-theme-micanis:
+        specifier: github:micanis/slidev-theme-micanis#v1.0.2
+        version: https://codeload.github.com/micanis/slidev-theme-micanis/tar.gz/d5d7303f540448220567095820e7839fbb17555e(vue@3.5.43(typescript@6.0.3))
+      vue:
+        specifier: ^3.5.33
+        version: 3.5.43(typescript@6.0.3)
+
 packages:
 
   '@antfu/install-pkg@1.1.0':

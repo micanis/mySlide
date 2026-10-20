@@ -1,22 +1,15 @@
 {
-  "name": "slides",
+  "name": "@myslide/trial-class",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
     "dev": "slidev --open",
+    "build": "slidev build",
     "export": "slidev export"
   },
   "dependencies": {
-    "@slidev/cli": "^52.15.2",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
-    "echarts": "^6.1.0",
-    "echarts-gl": "^2.0.9",
-    "slidev-theme-tut": "github:micanis/slidev-theme-tut",
+    "@slidev/cli": "^53.0.0",
+    "slidev-theme-micanis": "github:micanis/slidev-theme-micanis#v1.0.2",
     "vue": "^3.5.33"
-  },
-  "devDependencies": {
-    "playwright-chromium": "^1.60.0"
   }
 }

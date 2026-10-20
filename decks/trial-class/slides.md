@@ -1,37 +1,52 @@
 ---
-theme: tut
+theme: micanis
+themeConfig:
+  variant: default
+title: コンピュータビジョンの3大タスクを体験する
+routerMode: hash
+mdc: true
 layout: cover
+hideInToc: true
 ---
 
 ::title::
-コンピュータビジョンの3大タスクを体験する
+
+# コンピュータビジョンの3大タスクを体験する
 
 ::date::
-<SlideDate />
+
+体験授業
 
 ---
 layout: toc
+hideInToc: true
 ---
 
 ::title::
-目次
+
+# 目次
+
+::default::
+
+<Toc minDepth="1" maxDepth="1" />
 
 ---
 layout: section
+section: '01'
+level: 1
 ---
 
 # 今日のゴール
 
 ---
-
-::title::
-今日のゴール
-
-::default::
+layout: default
+title: 今日のゴール
+level: 2
+---
 
 今日はAIを自分で作るのではなく、すでに学習された画像AIを使って、結果の違いを体験する
 
-**できるようになること**
+### できるようになること
 
 - コンピュータビジョンが何をする技術か説明できる
 - 画像がコンピュータの中では数字として扱われることを理解する
@@ -40,105 +55,101 @@ layout: section
 
 ---
 layout: section
+section: '02'
+level: 1
 ---
 
 # 最小限の基礎知識
 
 ---
-layout: two-cols
+layout: n-columns
+columns: 2
+gap: 32
+title: コンピュータビジョン (CV) とは
+level: 2
 ---
 
-::title::
-コンピュータビジョン (CV) とは
+**画像や動画をコンピュータに理解させる技術**
 
-::left::
-コンピュータビジョンとは？
+人間は写真を見て、すぐに「人がいる」「車がある」「歩いている」と判断できる。コンピュータにも同じような判断を行わせる
 
-<div class="ml-2">
-<carbon-arrow-right class="mr-2" />画像や動画をコンピュータに理解させる技術
-</div>
+### 使われている例
 
-人間は写真を見て、すぐに「人がいる」「車がある」「歩いている」と判断できる
-
-コンピュータビジョンでは、同じような判断をコンピュータにも行わせる
-
-**使われている例**
-- 顔認証/顔認識
+- 顔認証 / 顔認識
 - 自動運転システム
 - 工場での不良品検知
 
-::right::
-<figure class="h-full flex flex-col items-center justify-center">
-  <img src="./assets/img001.webp" class="h-4/5 object-cover"/>
-  <figcaption class="text-sm text-gray-600 mt-2">図1 人物姿勢推定 (引用:ultralytics)</figcaption>
+::column-2::
+
+<figure class="flex h-full flex-col items-center justify-center">
+  <img src="./assets/img001.webp" class="max-h-[360px] object-contain" alt="人物姿勢推定の例">
+  <figcaption>図1 人物姿勢推定（引用: Ultralytics）</figcaption>
 </figure>
 
 ---
-layout: two-cols
+layout: n-columns
+columns: 2
+gap: 32
+title: コンピュータにとって画像とは
+level: 2
 ---
 
-::title::
-コンピュータにとって画像とは
+コンピュータは画像を「意味」ではなく **「数字」** として見ている。画像は小さな点（ピクセル）の集まり
 
-::left::
-コンピュータは画像を「意味」ではなく「数字」として見ている
+### グレースケール画像
 
-<div class="ml-2">
-<carbon-arrow-right class="mr-2" />画像は小さな点（ピクセル）の集まり
-</div>
-
-**グレースケール画像**
 - 各ピクセルに0〜255の数字が入る
 - 0は黒、255は白に近い
 
-**カラー画像 (RGB)**
-- R, G, Bの3つの数字で色を表す
-- 数字の組み合わせでいろいろな色になる
+### カラー画像 (RGB)
 
-::right::
-<figure class="h-full flex flex-col items-center justify-center">
-  <img src="./assets/img002.png" class="h-3/4"/>
-  <figcaption class="text-sm text-gray-600 mt-2">図2 赤・緑・青の層が重なって画像になる様子</figcaption>
+- R, G, Bの3つの数字で色を表す
+
+::column-2::
+
+<figure class="flex h-full flex-col items-center justify-center">
+  <img src="./assets/img002.png" class="max-h-[340px] object-contain" alt="赤・緑・青の層が重なって画像になる様子">
+  <figcaption>図2 赤・緑・青の層が重なって画像になる様子</figcaption>
 </figure>
 
 ---
+layout: default
+title: 画像AIは何を返すのか
+level: 2
+---
 
-::title::
-画像AIは何を返すのか
+画像を入力すると、目的に合わせた結果が返ってくる
 
-::default::
-
-コンピュータビジョンでは、画像を入力すると、目的に合わせた結果が返ってくる
-
-<div class="h-full flex flex-col justify-center gap-4 text-sm mt-8">
-  <div class="p-4 bg-gray-50 rounded">
-    <div class="font-bold mb-2">入力</div>
-    <div>画像・動画・カメラ映像</div>
+<div class="mt-10 grid grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch gap-4">
+  <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-6">
+    <h3>入力</h3>
+    <p>画像・動画・カメラ映像</p>
   </div>
-  <div class="text-center text-2xl">↓</div>
-  <div class="p-4 bg-blue-50 rounded">
-    <div class="font-bold mb-2">モデル</div>
-    <div>画像の中の特徴を見つけて、目的に合わせて判断する</div>
+  <div class="self-center text-3xl text-neutral-400">→</div>
+  <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-6">
+    <h3>モデル</h3>
+    <p>画像の中の特徴を見つけて、目的に合わせて判断する</p>
   </div>
-  <div class="text-center text-2xl">↓</div>
-  <div class="p-4 bg-green-50 rounded">
-    <div class="font-bold mb-2">出力</div>
-    <div>ラベル、位置、領域など</div>
+  <div class="self-center text-3xl text-neutral-400">→</div>
+  <div class="rounded-lg border-2 border-[var(--micanis-accent)] p-6">
+    <h3>出力</h3>
+    <p>ラベル、位置、領域など</p>
   </div>
 </div>
 
 ---
 layout: section
+section: '03'
+level: 1
 ---
 
 # CVの3大タスク
 
 ---
-
-::title::
-今日体験する3大タスク
-
-::default::
+layout: default
+title: 今日体験する3大タスク
+level: 2
+---
 
 同じ画像でも、「何を知りたいか」によって使うタスクが変わる
 
@@ -148,14 +159,15 @@ layout: section
 | **検出** | どこに何がある？ | 物体の位置 + ラベル |
 | **分割** | どの部分が対象？ | ピクセルごとの領域 |
 
+::conc::
+
 今日はColabでこの3つを順番に実行し、結果を比べる
 
 ---
-
-::title::
-3大タスクの使い分け
-
-::default::
+layout: default
+title: 3大タスクの使い分け
+level: 2
+---
 
 | 知りたいこと | 選ぶタスク | 出力のイメージ | 具体例 |
 |--------------|------------|----------------|--------|
@@ -163,103 +175,96 @@ layout: section
 | どこに写っているか | 検出 | 四角い枠 + 「人」 | 防犯カメラの人数確認 |
 | どの領域が対象か | 分割 | 対象ピクセルの塗り分け | 道路・歩道・車線の認識 |
 
+::conc::
+
 分類から分割へ進むほど、出力は細かくなる
 
 ---
-layout: two-cols
+layout: n-columns
+columns: 2
+gap: 32
+title: 分類 (Classification)
+level: 2
 ---
 
-::title::
-分類 (Classification)
+**画像全体を1つのカテゴリに分ける**
 
-::left::
-**画像分類とは？**
+### 答える質問
 
-<div class="ml-2">
-<carbon-arrow-right class="mr-2" />画像全体を1つのカテゴリに分ける
-</div>
-
-**答える質問**
 - この画像は何か？
 - 一番近いカテゴリは何か？
 
-**Colabで見るポイント**
-- 予測されたラベル
-- 確信度の高さ
+### Colabで見るポイント
+
+- 予測されたラベルと確信度
 - 複数の物体があるときに何を選ぶか
 
-::right::
-<figure class="h-full flex flex-col items-center justify-center">
-  <img src="./assets/img003.png" class="h-4/5 object-cover"/>
-  <figcaption class="text-sm text-gray-600 mt-2">図3 画像分類の例 (引用:ultralytics)</figcaption>
+::column-2::
+
+<figure class="flex h-full flex-col items-center justify-center">
+  <img src="./assets/img003.png" class="max-h-[360px] object-contain" alt="画像分類の例">
+  <figcaption>図3 画像分類の例（引用: Ultralytics）</figcaption>
 </figure>
 
 ---
-layout: two-cols
+layout: n-columns
+columns: 2
+gap: 32
+title: 検出 (Detection)
+level: 2
 ---
 
-::title::
-検出 (Detection)
+**画像内の物体の位置と種類を見つける**
 
-::left::
-**物体検出とは？**
+### 答える質問
 
-<div class="ml-2">
-<carbon-arrow-right class="mr-2" />画像内の物体の位置と種類を見つける
-</div>
+- どこにあるか？ それは何か？ いくつあるか？
 
-**答える質問**
-- どこにあるか？
-- それは何か？
-- いくつあるか？
+### Colabで見るポイント
 
-**Colabで見るポイント**
 - 枠の位置が合っているか
 - 見逃している物体はないか
 - 間違って検出していないか
 
-::right::
-<figure class="h-full flex flex-col items-center justify-center">
-  <img src="./assets/img004.webp" class="h-4/5 object-cover"/>
-  <figcaption class="text-sm text-gray-600 mt-2">図4 画像検出の例 (引用:ultralytics)</figcaption>
+::column-2::
+
+<figure class="flex h-full flex-col items-center justify-center">
+  <img src="./assets/img004.webp" class="max-h-[360px] object-contain" alt="物体検出の例">
+  <figcaption>図4 物体検出の例（引用: Ultralytics）</figcaption>
 </figure>
 
 ---
-layout: two-cols
+layout: n-columns
+columns: 2
+gap: 32
+title: 分割 (Segmentation)
+level: 2
 ---
 
-::title::
-分割 (Segmentation)
+**画像の中の対象領域を細かく分ける**
 
-::left::
-**セグメンテーションとは？**
+### 答える質問
 
-<div class="ml-2">
-<carbon-arrow-right class="mr-2" />画像の中の対象領域を細かく分ける
-</div>
+- どの部分が対象か？ 境界はどこか？
 
-**答える質問**
-- どの部分が対象か？
-- 形はどこまでか？
-- 背景と対象の境界はどこか？
+### Colabで見るポイント
 
-**Colabで見るポイント**
 - 対象の形に沿って塗られているか
 - 境界がずれていないか
 - 小さい部分が消えていないか
 
-::right::
-<figure class="h-full flex flex-col items-center justify-center">
-  <img src="./assets/img005.webp" class="h-4/5 object-cover"/>
-  <figcaption class="text-sm text-gray-600 mt-2">図5 画像分割の例 (引用:ultralytics)</figcaption>
+::column-2::
+
+<figure class="flex h-full flex-col items-center justify-center">
+  <img src="./assets/img005.webp" class="max-h-[360px] object-contain" alt="セグメンテーションの例">
+  <figcaption>図5 セグメンテーションの例（引用: Ultralytics）</figcaption>
 </figure>
 
 ---
-
-::title::
-同じ画像で比べる
-
-::default::
+layout: default
+title: 同じ画像で比べる
+level: 2
+---
 
 Colabでは、同じ画像を3つのタスクに入れて、返ってくる結果を比べる
 
@@ -269,63 +274,66 @@ Colabでは、同じ画像を3つのタスクに入れて、返ってくる結�
 | 検出 | 物体ごとの枠とラベル | 「人」が3人、「車」が2台 |
 | 分割 | 対象の形に沿った領域 | 人や車の部分だけが塗られる |
 
+::conc::
+
 大事なのは「どれが一番すごいか」ではなく、目的に合う出力を選ぶこと
 
 ---
 layout: section
+section: '04'
+level: 1
 ---
 
 # タスクの体験
 
 ---
+layout: default
+title: タスクの体験 (Google Colab)
+level: 2
+---
 
-::title::
-タスクの体験 (Google Colab)
+このスライドを開く: **micanis.github.io/mySlide/trial-class/#/17**
 
-::default::
+<a href="https://colab.research.google.com/github/micanis/mySlide/blob/main/decks/trial-class/python/dot_ipynbs/experience.ipynb" target="_blank" rel="noopener noreferrer" class="my-6 inline-flex items-center gap-3 rounded-md !bg-[var(--micanis-accent)] px-6 py-3 text-2xl font-bold !text-white !no-underline">
+  Colabで開く <span aria-hidden="true">→</span>
+</a>
 
-<span class="font-bold text-2xl">https://trial-class.vercel.app/17</span>と検索してください
-
-以下のリンクをクリックしてColabを開いてください
-
-<div class=" my-8">
-  <a href="https://colab.research.google.com/github/micanis/trial_class/blob/main/code/dot_ipynbs/experience.ipynb" target="_blank" class="text-2xl underline text-blue-600">
-    Colabで開く
-  </a>
-</div>
-
-1. 上のリンクをクリック
+1. 上のボタンをクリック
 2. 「ドライブにコピー」で自分のアカウントに保存（任意）
 3. 上から順にセルを実行していく
 
 ---
+layout: n-columns
+columns: 2
+gap: 40
+title: 体験ミッション
+level: 2
+---
 
-::title::
-体験ミッション
+### ミッション
 
-::default::
-
-Colabでは、結果を出すだけでなく「違い」と「間違い」を探す
-
-**ミッション**
-
-1. まず、写っているものがはっきりした画像で試す
-2. 次に、少し難しそうな画像で試す
+1. はっきりした画像で試す
+2. 少し難しそうな画像で試す
 3. 分類・検出・分割の結果の違いを見る
-4. AIがうまくいったところ、間違えたところをメモする
+4. うまくいったところ、間違えたところをメモする
 
-**難しそうな画像の例**
+::column-2::
+
+### 難しそうな画像の例
 
 - 小さい物体が写っている
 - 暗い、ぶれている、隠れている
 - たくさんの物体が同時に写っている
 
+::conc::
+
+結果を出すだけでなく「違い」と「間違い」を探す
+
 ---
-
-::title::
-体験で見るポイント
-
-::default::
+layout: default
+title: 体験で見るポイント
+level: 2
+---
 
 | 確認すること | 見るポイント |
 |--------------|--------------|
@@ -335,14 +343,15 @@ Colabでは、結果を出すだけでなく「違い」と「間違い」を探
 | 分割結果 | 対象の形に沿って塗られているか |
 | 間違い | どんな画像で失敗しやすいか |
 
-「なぜ当たったか」だけでなく「どんな時に外れるか」を見ると、実用化の課題が見えやすい
+::conc::
+
+「どんな時に外れるか」を見ると、実用化の課題が見えやすい
 
 ---
-
-::title::
-ふりかえり
-
-::default::
+layout: default
+title: ふりかえり
+level: 2
+---
 
 次の場面では、どのタスクを使うとよさそうか考えてみよう
 
@@ -352,30 +361,32 @@ Colabでは、結果を出すだけでなく「違い」と「間違い」を探
 | 防犯カメラで人の数を数えたい | 検出 |
 | 道路の画像から車道だけを取り出したい | 分割 |
 
+::conc::
+
 自分なら、分類・検出・分割を何に使ってみたいか？
 
 ---
-
-::title::
-まとめ
-
-::default::
-
-**今日のポイント**
+layout: default
+title: まとめ
+level: 2
+---
 
 - コンピュータビジョンは、画像や動画をコンピュータに理解させる技術
 - 画像はコンピュータの中では数字の集まりとして扱われる
 - 分類は「何が写っているか」を答える
 - 検出は「どこに何があるか」を答える
 - 分割は「どの部分が対象か」を答える
-- 目的に合わせて、必要な出力を選ぶことが大切
+
+::conc::
+
+目的に合わせて、必要な出力を選ぶことが大切
 
 ---
-
-::title::
-参考文献
-
-::default::
+layout: default
+title: 参考文献
+level: 2
+hideInToc: true
+---
 
 | 図 | 出典 |
 |----|------|
