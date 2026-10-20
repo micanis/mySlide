@@ -1,49 +1,59 @@
 # mySlide
 
 Slidev で作成したスライドを GitHub Pages で公開するリポジトリです。
+テーマはすべて [slidev-theme-micanis](https://github.com/micanis/slidev-theme-micanis)
+（`variant: default`）にそろえています。
 
 公開先: <https://micanis.github.io/mySlide/>
 
-## スライドを追加する
+| デッキ | 公開 URL |
+| --- | --- |
+| `decks/crane-recruiting` | <https://micanis.github.io/mySlide/crane-recruiting/> |
+| `decks/open-campus` | <https://micanis.github.io/mySlide/open-campus/> |
+| `decks/trial-class` | <https://micanis.github.io/mySlide/trial-class/> |
 
-`slides/` に Markdown ファイルを追加してください。たとえば
-`slides/open-campus.md` は次の URL で公開されます。
+## 構成
 
-<https://micanis.github.io/mySlide/open-campus/>
-
-ファイルのフロントマターに `title` を設定すると、公開サイトの一覧ページに
-そのタイトルで表示されます。
-
-```md
----
-title: オープンキャンパス
----
+```
+decks/<name>/
+  slides.md       エントリ（ここにあるデッキだけがビルドされる）
+  package.json    デッキごとの依存（pnpm workspace のパッケージ）
+  components/     デッキ専用の Vue コンポーネント
+  public/         デッキ専用の静的ファイル（/image.png で参照）
+  style.css       デッキ専用のスタイル
+  python/         授業で使う Notebook など（あれば）
+scripts/build.mjs 全デッキのビルドと一覧ページ・404 ページの生成
 ```
 
-ネストしたフォルダにも対応しています。`slides/2026/spring.md` は
-`/mySlide/2026/spring/` に公開されます。共有画像は `slides/public/` に置き、
-スライド内では `/image.png` のように参照してください。ビルド時に各スライドの
-公開 URL 配下へ自動で調整されます。
+## スライドを追加する
+
+1. `decks/<name>/` を作り、既存デッキの `package.json` をコピーして `name` を変えます。
+2. `slides.md` の先頭に次を書きます。
+
+   ```md
+   ---
+   theme: micanis
+   themeConfig:
+     variant: default
+   title: スライドのタイトル
+   routerMode: hash
+   layout: cover
+   ---
+   ```
+
+3. `pnpm install` を実行します。
+
+`title` は一覧ページの表示名になります。GitHub Pages には SPA のフォールバックが
+ないため、`routerMode: hash` は必ず指定してください（URL は `/<name>/#/3` の形になります）。
+`/<name>/3` の形で開かれた場合は、生成される 404 ページが `#/3` へ転送します。
 
 ## ローカル開発
 
 ```sh
 pnpm install
-pnpm dev
-```
-
-別のスライドを開く場合は、次のように実行します。
-
-```sh
-pnpm exec slidev slides/open-campus.md --open
-```
-
-すべてのスライドと一覧ページを生成するには、以下を実行します。
-
-```sh
-pnpm run build
+pnpm dev trial-class        # decks/trial-class を開く
+pnpm run build              # 全デッキと一覧ページを dist/ に生成
 ```
 
 `main` ブランチへ push すると GitHub Actions が同じビルドを実行し、GitHub Pages
-へデプロイします。GitHub の repository settings では Pages の公開元を
-**GitHub Actions** に設定してください。
+へデプロイします。
