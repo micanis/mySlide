@@ -13,9 +13,7 @@
   "dependencies": {
     "@slidev/cli": "^53.0.0",
     "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
-    "@tailwindcss/vite": "^4.3.3",
-    "tailwindcss": "^4.3.3",
+    "slidev-theme-micanis": "github:micanis/slidev-theme-micanis#v1.0.2",
     "vue": "^3.5.33"
   }
 }
