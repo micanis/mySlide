@@ -4,6 +4,7 @@ themeConfig:
   variant: default
 title: アシストキャッチャー 参加メンバー募集
 transition: slide-left
+routerMode: hash
 mdc: true
 layout: cover
 ---

@@ -1,19 +1,16 @@
 {
-  "name": "pnpm",
+  "name": "myslide",
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@11.22.0",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "dev": "slidev slides/crane_recruiting.md --open",
-    "export": "slidev export slides/crane_recruiting.md"
+    "dev": "node scripts/dev.mjs"
   },
   "engines": {
     "node": ">=22"
   },
-  "dependencies": {
-    "@slidev/cli": "^53.0.0",
-    "@slidev/theme-default": "latest",
-    "slidev-theme-micanis": "github:micanis/slidev-theme-micanis#v1.0.2",
-    "vue": "^3.5.33"
+  "devDependencies": {
+    "playwright-chromium": "^1.56.0"
   }
 }

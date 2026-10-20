@@ -24,7 +24,6 @@ jobs:
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: 10
           run_install: false
 
       - name: Set up Node.js
@@ -34,6 +33,9 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
+        env:
+          # Chromium is only needed for `slidev export`, not for the build.
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: pnpm install --frozen-lockfile
 
       - name: Build slides

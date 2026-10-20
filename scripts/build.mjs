@@ -1,77 +1,73 @@
-import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { spawnSync } from 'node:child_process'
-import { dirname, relative, resolve, sep } from 'node:path'
+import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const slidesDirectory = resolve(root, 'slides')
+const decksDirectory = resolve(root, 'decks')
 const outputDirectory = resolve(root, 'dist')
 const siteBasePath = normalizeBasePath(process.env.SITE_BASE_PATH ?? '/mySlide/')
 
-const slideFiles = findSlides(slidesDirectory)
-if (slideFiles.length === 0) {
-  throw new Error('No slide Markdown files were found in slides/.')
+// Old public paths that moved. The generated 404.html sends visitors on.
+const redirects = {
+  crane_recruiting: 'crane-recruiting',
+}
+
+const decks = findDecks(decksDirectory)
+if (decks.length === 0) {
+  throw new Error('No decks were found. Add decks/<name>/slides.md.')
 }
 
 rmSync(outputDirectory, { recursive: true, force: true })
 mkdirSync(outputDirectory, { recursive: true })
 
-const slides = slideFiles.map((sourcePath) => {
-  const relativePath = relative(slidesDirectory, sourcePath)
-  const slug = relativePath.replace(/\.md$/, '').split(sep).join('/')
-
-  if (slug === 'index') {
-    throw new Error('slides/index.md is reserved for the generated slide index.')
-  }
-
-  return {
-    sourcePath,
-    source: relative(root, sourcePath),
-    slug,
-    title: getTitle(sourcePath, slug),
-    outputPath: resolve(outputDirectory, slug),
-    basePath: `${siteBasePath}${slug}/`,
-  }
-})
-
-for (const slide of slides) {
-  console.log(`Building ${slide.source} → ${slide.basePath}`)
+for (const deck of decks) {
+  console.log(`Building ${relative(root, deck.directory)} → ${deck.basePath}`)
   const result = spawnSync(
     'pnpm',
-    ['exec', 'slidev', 'build', slide.source, '--out', slide.outputPath, '--base', slide.basePath],
-    { cwd: root, stdio: 'inherit' },
+    ['exec', 'slidev', 'build', 'slides.md', '--out', deck.outputPath, '--base', deck.basePath],
+    { cwd: deck.directory, stdio: 'inherit' },
   )
 
   if (result.error) throw result.error
   if (result.status !== 0) process.exit(result.status ?? 1)
 }
 
-writeFileSync(resolve(outputDirectory, 'index.html'), createIndex(slides), 'utf8')
+writeFileSync(resolve(outputDirectory, 'index.html'), createIndex(decks), 'utf8')
+writeFileSync(resolve(outputDirectory, '404.html'), createNotFound(decks), 'utf8')
 
-function findSlides(directory) {
+function findDecks(directory) {
   return readdirSync(directory, { withFileTypes: true })
-    .flatMap((entry) => {
-      if (entry.name.startsWith('.')) return []
-      const entryPath = resolve(directory, entry.name)
-      if (entry.isDirectory()) return entry.name === 'public' ? [] : findSlides(entryPath)
-      return entry.isFile() && entry.name.endsWith('.md') ? [entryPath] : []
-    })
+    .filter(entry => entry.isDirectory() && !entry.name.startsWith('.'))
+    .map(entry => resolve(directory, entry.name))
+    .filter(deckDirectory => existsSync(resolve(deckDirectory, 'slides.md')))
     .sort()
+    .map((deckDirectory) => {
+      const slug = relative(directory, deckDirectory)
+      return {
+        directory: deckDirectory,
+        slug,
+        title: getTitle(resolve(deckDirectory, 'slides.md'), slug),
+        outputPath: resolve(outputDirectory, slug),
+        basePath: `${siteBasePath}${slug}/`,
+      }
+    })
 }
 
 function getTitle(sourcePath, fallback) {
   const source = readFileSync(sourcePath, 'utf8')
-  const frontmatterTitle = source.match(/^---[\s\S]*?^title:\s*["']?(.+?)["']?\s*$/m)
+  const headmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? ''
+  const frontmatterTitle = headmatter.match(/^title:\s*["']?(.+?)["']?\s*$/m)
   const heading = source.match(/^#\s+(.+)$/m)
-  return (frontmatterTitle?.[1] ?? heading?.[1] ?? fallback).trim()
+  return (frontmatterTitle?.[1] ?? heading?.[1] ?? fallback).replace(/<br\s*\/?>/g, ' ').trim()
 }
 
 function normalizeBasePath(path) {
   return `/${path.replace(/^\/+|\/+$/g, '')}/`.replace('//', '/')
 }
 
-function createIndex(slides) {
-  const cards = slides
+function createIndex(decks) {
+  const cards = decks
     .map(({ slug, title }) => `      <li><a href="${escapeHtml(encodeURI(`${slug}/`))}">${escapeHtml(title)}</a></li>`)
     .join('\n')
 
@@ -102,6 +98,40 @@ function createIndex(slides) {
 ${cards}
       </ul>
     </main>
+  </body>
+</html>
+`
+}
+
+// GitHub Pages serves the root 404.html for every unknown path and has no SPA
+// fallback. Decks use routerMode: hash, so /<deck>/3 (typed or from an old
+// link) and moved deck paths are sent to /<deck>/#/3; anything else links home.
+function createNotFound(decks) {
+  return `<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ページが見つかりません</title>
+    <script>
+      (() => {
+        const base = ${JSON.stringify(siteBasePath)}
+        const decks = ${JSON.stringify(Object.fromEntries([...decks.map(({ slug }) => [slug, slug]), ...Object.entries(redirects)]))}
+        const { pathname, hash } = location
+        if (!pathname.startsWith(base)) return
+        const [first, ...rest] = pathname.slice(base.length).split('/')
+        const deck = decks[first]
+        if (deck) location.replace(base + deck + '/' + (hash || (rest.join('/') ? '#/' + rest.join('/') : '')))
+      })()
+    </script>
+    <style>
+      :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+      body { max-width: 48rem; margin: 0 auto; padding: 4rem 1.5rem; }
+    </style>
+  </head>
+  <body>
+    <h1>ページが見つかりません</h1>
+    <p><a href="${siteBasePath}">スライド一覧へ</a></p>
   </body>
 </html>
 `

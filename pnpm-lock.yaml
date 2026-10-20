@@ -7,13 +7,16 @@ settings:
 importers:
 
   .:
+    devDependencies:
+      playwright-chromium:
+        specifier: ^1.56.0
+        version: 1.64.1
+
+  decks/crane-recruiting:
     dependencies:
       '@slidev/cli':
         specifier: ^53.0.0
-        version: 53.0.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.152.0)(@types/markdown-it@14.2.0)(@types/node@22.20.5)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.3.0)(cac@7.0.0)(srvx@1.0.5)(vite@8.3.2(@types/node@22.20.5)(jiti@2.7.0)(yaml@2.9.1)))(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(lightningcss@1.33.0)(markdown-it@14.3.2)(oxc-parser@0.150.0)(postcss@8.5.28)(rolldown@1.2.12)(srvx@1.0.5)
-      '@slidev/theme-default':
-        specifier: latest
-        version: 0.25.0
+        version: 53.0.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.152.0)(@types/markdown-it@14.2.0)(@types/node@22.20.5)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.3.0)(cac@7.0.0)(srvx@1.0.5)(vite@8.3.2(@types/node@22.20.5)(jiti@2.7.0)(yaml@2.9.1)))(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(lightningcss@1.33.0)(markdown-it@14.3.2)(oxc-parser@0.150.0)(playwright-chromium@1.64.1)(postcss@8.5.28)(rolldown@1.2.12)(srvx@1.0.5)
       slidev-theme-micanis:
         specifier: github:micanis/slidev-theme-micanis#v1.0.2
         version: https://codeload.github.com/micanis/slidev-theme-micanis/tar.gz/d5d7303f540448220567095820e7839fbb17555e(vue@3.5.43(typescript@6.0.3))
@@ -645,14 +648,6 @@ packages:
   '@slidev/rough-notation@0.1.0':
     resolution: {integrity: sha512-a/CbVmjuoO3E4JbUr2HOTsXndbcrdLWOM+ajbSQIY3gmLFzhjeXHGksGcp1NZ08pJjLZyTCxfz1C7v/ltJqycA==}
 
-  '@slidev/theme-default@0.25.0':
-    resolution: {integrity: sha512-iWvthH1Ny+i6gTwRnEeeU+EiqsHC56UdEO45bqLSNmymRAOWkKUJ/M0o7iahLzHSXsiPu71B7C715WxqjXk2hw==}
-    engines: {node: '>=14.0.0', slidev: '>=v0.47.0'}
-
-  '@slidev/types@0.47.5':
-    resolution: {integrity: sha512-X67V4cCgM0Sz50bP8GbVzmiL8DHC2IXvdKcsN7DlxHyf+/T4d9GveeGukwha5Fx3MuYeGZWKag7TFL2ZY4w54A==}
-    engines: {node: '>=18.0.0'}
-
   '@slidev/types@53.0.0':
     resolution: {integrity: sha512-Iyr37tIJAC65lTLgFim+5c5iqNAaj7NfkcFUzu8yqxY9SAeuFyk7rB8MBc/VC4JVpPVaahVO+35EX+wPY6BAeg==}
     engines: {node: '>=22.12.0'}
@@ -1194,9 +1189,6 @@ packages:
   clsx@2.1.1:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
-
-  codemirror-theme-vars@0.1.2:
-    resolution: {integrity: sha512-WTau8X2q58b0SOAY9DO+iQVw8JKVEgyQIqArp2D732tcc+pobbMta3bnVMdQdmgwuvNrOFFr6HoxPRoQOgooFA==}
 
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
@@ -2336,6 +2328,16 @@ packages:
   plantuml-encoder@1.4.0:
     resolution: {integrity: sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g==}
 
+  playwright-chromium@1.64.1:
+    resolution: {integrity: sha512-lvAzvvIRtbHaeLwl7XoUkhSNuWHKshbrYv2sjqYgLQS4SsTTwgSTlg9BwU5LeGxYkHxBXTnKtNDEQdZSOj/01g==}
+    engines: {node: '>=20'}
+    hasBin: true
+
+  playwright-core@1.64.1:
+    resolution: {integrity: sha512-BC4s8y6SEVA6Q1rSxZTto8hI1KUI3xXlHGZgvGqP4IqPdI/a6FX9H29IDNz7vKo9l21b6LfYosScPL6M3xxyDQ==}
+    engines: {node: '>=20'}
+    hasBin: true
+
   points-on-curve@0.2.0:
     resolution: {integrity: sha512-0mYKnYYe9ZcqMCWhUjItv/oHjvgEsfKvnUTg8sAtnHr3GVy7rGkXCb6d5cSyqrWqL4k81b9CPg3urd+T7aop3A==}
 
@@ -2365,9 +2367,6 @@ packages:
 
   pptxgenjs@4.0.1:
     resolution: {integrity: sha512-TeJISr8wouAuXw4C1F/mC33xbZs/FuEG6nH9FG1Zj+nuPcGMP5YRHl6X+j3HSUnS1f3at6k75ZZXPMZlA5Lj9A==}
-
-  prism-theme-vars@0.2.5:
-    resolution: {integrity: sha512-/D8gBTScYzi9afwE6v3TC1U/1YFZ6k+ly17mtVRdLpGy7E79YjJJWkXFgUDHJ2gDksV/ZnXF7ydJ4TvoDm2z/Q==}
 
   process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
@@ -3543,7 +3542,7 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@slidev/cli@53.0.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.152.0)(@types/markdown-it@14.2.0)(@types/node@22.20.5)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.3.0)(cac@7.0.0)(srvx@1.0.5)(vite@8.3.2(@types/node@22.20.5)(jiti@2.7.0)(yaml@2.9.1)))(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(lightningcss@1.33.0)(markdown-it@14.3.2)(oxc-parser@0.150.0)(postcss@8.5.28)(rolldown@1.2.12)(srvx@1.0.5)':
+  '@slidev/cli@53.0.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.152.0)(@types/markdown-it@14.2.0)(@types/node@22.20.5)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.3.0)(cac@7.0.0)(srvx@1.0.5)(vite@8.3.2(@types/node@22.20.5)(jiti@2.7.0)(yaml@2.9.1)))(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(lightningcss@1.33.0)(markdown-it@14.3.2)(oxc-parser@0.150.0)(playwright-chromium@1.64.1)(postcss@8.5.28)(rolldown@1.2.12)(srvx@1.0.5)':
     dependencies:
       '@antfu/ni': 30.6.0
       '@antfu/utils': 9.3.0
@@ -3620,6 +3619,8 @@ snapshots:
       yaml: 2.9.1
       yargs: 18.2.0
       zod: 4.6.5
+    optionalDependencies:
+      playwright-chromium: 1.64.1
     transitivePeerDependencies:
       - '@devframes/agentic'
       - '@farmfe/core'
@@ -3792,14 +3793,6 @@ snapshots:
   '@slidev/rough-notation@0.1.0':
     dependencies:
       roughjs: 4.6.6
-
-  '@slidev/theme-default@0.25.0':
-    dependencies:
-      '@slidev/types': 0.47.5
-      codemirror-theme-vars: 0.1.2
-      prism-theme-vars: 0.2.5
-
-  '@slidev/types@0.47.5': {}
 
   '@slidev/types@53.0.0(@modelcontextprotocol/server@2.3.0)(@nuxt/kit@3.21.11)(@vue/compiler-sfc@3.5.43)(cac@7.0.0)(rolldown@1.2.12)(srvx@1.0.5)(typescript@6.0.3)(vite@8.3.2(@types/node@22.20.5)(jiti@2.7.0)(yaml@2.9.1))':
     dependencies:
@@ -4569,8 +4562,6 @@ snapshots:
       is-regexp: 3.1.0
 
   clsx@2.1.1: {}
-
-  codemirror-theme-vars@0.1.2: {}
 
   colorette@2.0.20: {}
 
@@ -5806,6 +5797,12 @@ snapshots:
 
   plantuml-encoder@1.4.0: {}
 
+  playwright-chromium@1.64.1:
+    dependencies:
+      playwright-core: 1.64.1
+
+  playwright-core@1.64.1: {}
+
   points-on-curve@0.2.0: {}
 
   points-on-path@0.2.1:
@@ -5844,8 +5841,6 @@ snapshots:
       https: 1.0.0
       image-size: 1.2.1
       jszip: 3.10.2
-
-  prism-theme-vars@0.2.5: {}
 
   process-nextick-args@2.0.1: {}
 
