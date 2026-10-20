@@ -5,10 +5,10 @@ let runtimePromise: Promise<PyodideAPI> | undefined
 
 async function getRuntime() {
   if (!runtimePromise) {
-    // The CDN files must match the installed package version exactly
-    runtimePromise = import('pyodide').then(({ loadPyodide, version }) =>
+    // vite.config.ts serves the runtime files of the installed package here
+    runtimePromise = import('pyodide').then(({ loadPyodide }) =>
       loadPyodide({
-        indexURL: `https://cdn.jsdelivr.net/pyodide/v${version}/full/`,
+        indexURL: `${import.meta.env.BASE_URL}pyodide/`,
       }),
     )
   }

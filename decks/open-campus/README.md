@@ -15,6 +15,7 @@ pnpm dev open-campus
 
 `sections/` の各ファイルは `slides.md` から `src:` で読み込んでいます。
 `components/PythonRunner.vue` はブラウザ内のPyodideでPythonを実行します。
+Pyodide の実行ファイルは `vite.config.ts` がインストール済みの `pyodide` パッケージから配信するため、CDN に接続できなくても動きます。
 
 ## Python Notebook
 
