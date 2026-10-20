@@ -2,40 +2,19 @@
 
 Python・画像処理・人物検出・姿勢推定を体験するSlidev資料です。
 
-公開URL: <https://ai-system-open-campus.pages.dev/>
+公開URL: <https://micanis.github.io/mySlide/open-campus/>
 
 ## ローカル開発
 
+リポジトリのルートで実行します。
+
 ```sh
 pnpm install
-pnpm dev
+pnpm dev open-campus
 ```
 
-<http://localhost:3030> を開きます。
-
-## ビルド
-
-```sh
-pnpm build
-```
-
-出力先は `dist/` です。
-
-## Cloudflare Pagesへデプロイ
-
-初回のみCloudflareへログインします。
-
-```sh
-pnpm exec wrangler login
-```
-
-ビルドして本番へデプロイします。
-
-```sh
-pnpm deploy
-```
-
-プロジェクト名は `ai-system-open-campus`、本番ブランチは `main` です。
+`sections/` の各ファイルは `slides.md` から `src:` で読み込んでいます。
+`components/PythonRunner.vue` はブラウザ内のPyodideでPythonを実行します。
 
 ## Python Notebook
 

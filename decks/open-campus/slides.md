@@ -1,59 +1,46 @@
 ---
-theme: default
-title: AIシステム科体験授業資料
-info: 高校生向け・50分授業
+theme: micanis
+themeConfig:
+  variant: default
+title: Pythonで体験する リアルタイム人物検出・骨格認識
+info: AIシステム科 体験授業資料（高校生向け・50分）
+routerMode: hash
 drawings:
   persist: false
 transition: fade-out
 mdc: true
 duration: 50min
-aspectRatio: 16/9
-fonts:
-  sans: Noto Sans JP
-  mono: JetBrains Mono
 defaults:
   layout: default
+layout: cover
+hideInToc: true
 ---
 
-<div class="h-full flex flex-col justify-center">
-
-<div class="text-sm font-mono tracking-widest text-neutral-500 mb-8">
-COMPUTER VISION / PYTHON
-</div>
+::title::
 
 # Pythonで体験する<br>リアルタイム人物検出・骨格認識
 
+::date::
 
-<div class="mt-12 flex gap-3 text-sm text-neutral-500">
-  <span>高校生向け</span>
-  <span>／</span>
-  <span>50分</span>
-</div>
+AIシステム科 体験授業
 
-</div>
+::default::
+
+高校生向け ／ 50分
 
 ---
-layout: default
+layout: toc
+label: Table of Contents
+hideInToc: true
 ---
 
-<div class="h-full flex flex-col justify-center">
-
-<div class="text-sm font-mono tracking-widest text-neutral-500 mb-8">
-TABLE OF CONTENTS
-</div>
+::title::
 
 # 今日の流れ
 
-<div class="mt-10 grid grid-cols-2 gap-x-16 gap-y-6 text-xl">
-  <div><span class="text-neutral-600 font-mono mr-4">01</span>画像の基礎</div>
-  <div><span class="text-neutral-600 font-mono mr-4">02</span>プログラムに慣れよう (Python)</div>
-  <div><span class="text-neutral-600 font-mono mr-4">03</span>画像を触ろう</div>
-  <div><span class="text-neutral-600 font-mono mr-4">04</span>人物認識と姿勢推定</div>
-  <div><span class="text-neutral-600 font-mono mr-4">05</span>Gemini Canvasと姿勢推定</div>
-  <div><span class="text-neutral-600 font-mono mr-4">06</span>まとめと応用</div>
-</div>
+::default::
 
-</div>
+<Toc minDepth="1" maxDepth="1" />
 
 ---
 src: ./sections/01-image-basics.md

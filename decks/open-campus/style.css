@@ -1,22 +1,35 @@
+/* Deck helpers on top of slidev-theme-micanis (canvas 1280px wide) */
+
 :root {
-  --slide-bg: #f1f5f9; /* Tailwind slate-100 */
+  --slidev-code-font-size: 17px;
+  --slidev-code-line-height: 1.6;
+  --slidev-code-padding: 14px 18px;
 }
 
-.slidev-layout {
-  background-color: var(--slide-bg);
-  color: #171717; /* neutral-900 */
-  font-family: "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+/* Bordered box for grouped content: label, heading, short text */
+.card {
+  @apply min-w-0 rounded-lg border border-neutral-200 bg-neutral-50 p-6;
 }
 
-.slidev-layout code,
-.slidev-layout pre {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
+.card h3 {
+  @apply mb-1;
 }
 
-.slidev-layout.visual-only {
-  padding: 0 !important;
+/* Small uppercase caption above a heading or value */
+.label {
+  @apply mb-2 block font-mono text-sm font-bold uppercase tracking-[0.14em] text-neutral-500;
 }
 
-.image-pixelated {
-  image-rendering: pixelated;
+/* Secondary text that is smaller than body text (p is text-2xl in the theme) */
+.note {
+  @apply text-xl leading-relaxed text-neutral-600;
+}
+
+.micanis-layout .note p {
+  @apply text-xl;
+}
+
+/* Text pasted into Gemini: keep line breaks, use the body font */
+.prompt {
+  @apply m-0 whitespace-pre-wrap font-sans text-xl leading-relaxed text-neutral-900;
 }

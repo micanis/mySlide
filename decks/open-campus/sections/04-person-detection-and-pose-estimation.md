@@ -1,197 +1,182 @@
 ---
-layout: center
+layout: section
+section: '04'
+level: 1
 ---
 
-<div class="text-center">
-  <div class="text-sm font-mono tracking-widest text-neutral-500 mb-6">SECTION 04</div>
-  <h1 class="text-5xl font-bold">人物認識と姿勢推定</h1>
-</div>
+# 人物認識と姿勢推定
 
 ---
-layout: default
+title: 4.1 コンピュータビジョンとは
+level: 2
 ---
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">4.1 コンピュータビジョンとは</h1>
-  <p class="mt-7 text-lg leading-relaxed text-neutral-800">
-    カメラや画像からコンピュータが情報を読み取る技術<br>
-    人が目と脳で行う「見る」を画像とプログラムで再現します
-  </p>
-  <div class="mt-8 min-h-0 flex-1 grid place-items-center">
-    <img
-      src="/images/what-is-cv.webp"
-      alt="人の視覚とコンピュータビジョンを比較した図"
-      class="max-h-full w-[92%] object-contain"
-    />
+カメラや画像からコンピュータが情報を読み取る技術<br>
+人が目と脳で行う「見る」を画像とプログラムで再現します
+
+<img src="/images/what-is-cv.webp" alt="人の視覚とコンピュータビジョンを比較した図" class="mx-auto mt-2 block max-h-[340px] max-w-full object-contain">
+
+---
+layout: n-columns
+columns: 2
+gap: 40
+title: 4.2 人物検出とは
+level: 2
+---
+
+### 人がどこにいるかを見つける
+
+画像の中から人物を探し、1人ずつ四角形で囲みます
+
+> この四角形をバウンディングボックスと呼びます
+
+::column-2::
+
+<img src="/images/what-is-person-detection.webp" alt="複数の人物を四角形で囲んだ人物検出結果" class="mx-auto block max-h-[440px] max-w-full object-contain">
+
+---
+title: 4.3 人物検出で得られるもの
+level: 2
+---
+
+<div class="mt-2 grid grid-cols-2 gap-5">
+  <div class="card">
+    <span class="label">Class</span>
+    <h3>person</h3>
+    <div class="note">見つけた物体の種類</div>
+  </div>
+  <div class="card">
+    <span class="label">Confidence</span>
+    <h3>0.92</h3>
+    <div class="note">モデルがどれくらい確信しているか</div>
+  </div>
+  <div class="card">
+    <span class="label">Bounding box</span>
+    <h3 class="font-mono">x1 y1 x2 y2</h3>
+    <div class="note">左上と右下の座標</div>
+  </div>
+  <div class="card">
+    <span class="label">Count</span>
+    <h3>4 people</h3>
+    <div class="note">四角形の数から人数を数える</div>
   </div>
 </div>
 
 ---
-layout: default
+layout: n-columns
+columns: 2
+gap: 40
+title: 4.4 実習｜人物を検出する
+level: 2
 ---
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">4.2 人物検出とは</h1>
-  <div class="mt-8 min-h-0 flex-1 grid grid-cols-2 gap-10">
-    <div class="flex flex-col justify-center pr-4">
-      <p class="text-2xl font-bold leading-relaxed text-neutral-900">人がどこにいるかを見つける</p>
-      <p class="mt-5 text-lg leading-relaxed text-neutral-800">
-        画像の中から人物を探し<br>
-        1人ずつ四角形で囲みます
-      </p>
-      <div class="mt-9 border-l-2 border-neutral-500 pl-5 text-base leading-relaxed text-neutral-700">
-        この四角形を<br>
-        バウンディングボックスと呼びます
-      </div>
-    </div>
-    <div class="min-h-0 grid place-items-center">
-      <img
-        src="/images/what-is-person-detection.webp"
-        alt="複数の人物を四角形で囲んだ人物検出結果"
-        class="max-h-full w-auto object-contain"
-      />
-    </div>
+<span class="label">Notebook / first half</span>
+
+### 人物検出のセルまで実行
+
+1. 画像をダウンロード
+2. 人物だけを検出
+3. 人数と確信度を確認
+
+<a href="https://colab.research.google.com/github/micanis/mySlide/blob/main/decks/open-campus/python/04_person_detection_pose.ipynb" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-3 rounded-md !bg-[var(--micanis-accent)] px-6 py-3 text-xl font-bold !text-white !no-underline">Google Colabを開く <span aria-hidden="true">→</span></a>
+
+::column-2::
+
+<span class="label">Person detection</span>
+
+```python
+model = YOLO("yolo26n.pt")
+
+result = model.predict(
+    image,
+    classes=[0]
+)[0]
+
+plt.imshow(result.plot()[..., ::-1])
+plt.show()
+```
+
+<a href="https://docs.ultralytics.com/modes/predict/" target="_blank" rel="noopener noreferrer" class="text-lg">Ultralytics Predict documentation</a>
+
+---
+layout: n-columns
+columns: 2
+gap: 40
+title: 4.5 姿勢推定とは
+level: 2
+---
+
+### 人がどんな姿勢かを見つける
+
+鼻・肩・ひじ・手首・ひざなどを17個のキーポイントとして検出します
+
+> 体の特徴を表す点をキーポイント、点を結んだ線をスケルトンと呼びます
+
+::column-2::
+
+<img src="/images/what-is-pose-estimation.webp" alt="人物の関節を点と線で表した姿勢推定結果" class="mx-auto block max-h-[440px] max-w-full object-contain">
+
+---
+title: 4.6 姿勢はどうやって求める
+level: 2
+---
+
+<div class="grid grid-cols-3 gap-5">
+  <div class="card">
+    <span class="label">01 / Detect</span>
+    <h3>人物の範囲を見つける</h3>
+    <div class="note">画像のどこに人がいるかを先に探す</div>
+  </div>
+  <div class="card">
+    <span class="label">02 / Keypoint</span>
+    <h3>17個の点を予測する</h3>
+    <div class="note">鼻や肩などのX・Y座標と確信度を求める</div>
+  </div>
+  <div class="card">
+    <span class="label">03 / Connect</span>
+    <h3>決められた順に結ぶ</h3>
+    <div class="note">肩とひじなど対応する関節を線でつなぐ</div>
   </div>
 </div>
 
----
-layout: default
----
-
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">4.3 人物検出で得られるもの</h1>
-  <div class="mt-10 min-h-0 flex-1 grid grid-cols-2 gap-x-6 gap-y-5">
-    <div class="border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">CLASS</div>
-      <div class="mt-3 text-2xl font-bold text-neutral-900">person</div>
-      <p class="mt-2 text-sm text-neutral-700">見つけた物体の種類</p>
-    </div>
-    <div class="border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">CONFIDENCE</div>
-      <div class="mt-3 text-2xl font-bold text-neutral-900">0.92</div>
-      <p class="mt-2 text-sm text-neutral-700">モデルがどれくらい確信しているか</p>
-    </div>
-    <div class="border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">BOUNDING BOX</div>
-      <div class="mt-3 font-mono text-xl font-bold text-neutral-900">x1 y1 x2 y2</div>
-      <p class="mt-2 text-sm text-neutral-700">左上と右下の座標</p>
-    </div>
-    <div class="border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">COUNT</div>
-      <div class="mt-3 text-2xl font-bold text-neutral-900">4 people</div>
-      <p class="mt-2 text-sm text-neutral-700">四角形の数から人数を数える</p>
-    </div>
-  </div>
-</div>
+<figure class="mt-5 text-center">
+  <img src="/images/ultralytics-pose.webp" alt="姿勢推定で腕の関節を結んだ例" class="mx-auto h-[150px] max-w-full object-contain">
+  <figcaption>YOLO Poseは画像内にいる複数人のキーポイントをまとめて検出します</figcaption>
+</figure>
 
 ---
-layout: default
+layout: n-columns
+columns: 2
+gap: 40
+title: 4.7 実習｜姿勢を推定する
+level: 2
 ---
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">4.4 実習｜人物を検出する</h1>
-  <div class="mt-8 min-h-0 flex-1 grid grid-cols-[.9fr_1.1fr] gap-10">
-    <div class="flex flex-col justify-center pr-4">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">NOTEBOOK / FIRST HALF</div>
-      <p class="mt-4 text-2xl font-bold leading-relaxed text-neutral-900">人物検出のセルまで実行</p>
-      <div class="mt-7 space-y-4 text-base leading-relaxed text-neutral-800">
-        <div><span class="mr-4 font-mono text-neutral-600">01</span>画像をダウンロード</div>
-        <div><span class="mr-4 font-mono text-neutral-600">02</span>人物だけを検出</div>
-        <div><span class="mr-4 font-mono text-neutral-600">03</span>人数と確信度を確認</div>
-      </div>
-      <a href="https://colab.research.google.com/github/micanis-dev/open-campus/blob/main/python/04_person_detection_pose.ipynb" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block border border-neutral-500 bg-neutral-100 px-5 py-4 text-center font-bold text-neutral-900 no-underline">Google Colabを開く</a>
-    </div>
-    <div class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">PERSON DETECTION</div>
-      <pre class="mt-5 whitespace-pre-wrap text-sm leading-relaxed text-neutral-900">model = YOLO(&quot;yolo26n.pt&quot;)&#10;&#10;result = model.predict(&#10;    image,&#10;    classes=[0]&#10;)[0]&#10;&#10;plt.imshow(result.plot()[..., ::-1])&#10;plt.show()</pre>
-      <a href="https://docs.ultralytics.com/modes/predict/" target="_blank" class="mt-5 text-xs text-neutral-600 underline">Ultralytics Predict documentation</a>
-    </div>
-  </div>
-</div>
+<span class="label">Notebook / second half</span>
 
----
-layout: default
----
+### 姿勢推定のセルを実行
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">4.5 姿勢推定とは</h1>
-  <div class="mt-8 min-h-0 flex-1 grid grid-cols-2 gap-10">
-    <div class="flex flex-col justify-center pr-4">
-      <p class="text-2xl font-bold leading-relaxed text-neutral-900">人がどんな姿勢かを見つける</p>
-      <p class="mt-5 text-lg leading-relaxed text-neutral-800">
-        鼻　肩　ひじ　手首　ひざなどを<br>
-        17個のキーポイントとして検出します
-      </p>
-      <div class="mt-9 border-l-2 border-neutral-500 pl-5 text-base leading-relaxed text-neutral-700">
-        体の特徴を表す点をキーポイント<br>
-        点を結んだ線をスケルトンと呼びます
-      </div>
-    </div>
-    <div class="min-h-0 grid place-items-center">
-      <img
-        src="/images/what-is-pose-estimation.webp"
-        alt="人物の関節を点と線で表した姿勢推定結果"
-        class="max-h-full w-auto object-contain"
-      />
-    </div>
-  </div>
-</div>
+1. YOLO Poseモデルを読み込む
+2. 点と線を画像へ表示
+3. 関節座標の形を確認
 
----
-layout: default
----
+> 人物検出は「どこにいるか」、姿勢推定は「どんな姿勢か」
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">4.6 姿勢はどうやって求める</h1>
-  <div class="mt-8 min-h-0 flex-1 flex flex-col">
-    <div class="grid grid-cols-3 gap-4">
-      <div class="border border-neutral-500 bg-neutral-100 p-5">
-        <div class="text-xs font-mono text-neutral-600">01 / DETECT</div>
-        <p class="mt-3 text-lg font-bold text-neutral-900">人物の範囲を見つける</p>
-        <p class="mt-2 text-sm leading-relaxed text-neutral-700">画像のどこに人がいるかを先に探す</p>
-      </div>
-      <div class="border border-neutral-500 bg-neutral-100 p-5">
-        <div class="text-xs font-mono text-neutral-600">02 / KEYPOINT</div>
-        <p class="mt-3 text-lg font-bold text-neutral-900">17個の点を予測する</p>
-        <p class="mt-2 text-sm leading-relaxed text-neutral-700">鼻や肩などのX Y座標と確信度を求める</p>
-      </div>
-      <div class="border border-neutral-500 bg-neutral-100 p-5">
-        <div class="text-xs font-mono text-neutral-600">03 / CONNECT</div>
-        <p class="mt-3 text-lg font-bold text-neutral-900">決められた順に結ぶ</p>
-        <p class="mt-2 text-sm leading-relaxed text-neutral-700">肩とひじなど対応する関節を線でつなぐ</p>
-      </div>
-    </div>
-    <div class="mt-5 min-h-0 flex-1 grid place-items-center">
-      <img src="/images/ultralytics-pose.webp" alt="姿勢推定で腕の関節を結んだ例" class="h-[170px] w-[82%] object-contain" />
-    </div>
-    <p class="mt-2 text-center text-xs text-neutral-100">YOLO Poseは画像内にいる複数人のキーポイントをまとめて検出します</p>
-  </div>
-</div>
+::column-2::
 
----
-layout: default
----
+<span class="label">YOLO26 Pose / multi-person</span>
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">4.7 実習｜姿勢を推定する</h1>
-  <div class="mt-8 min-h-0 flex-1 grid grid-cols-[.9fr_1.1fr] gap-10">
-    <div class="flex flex-col justify-center pr-4">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">NOTEBOOK / SECOND HALF</div>
-      <p class="mt-4 text-2xl font-bold leading-relaxed text-neutral-900">姿勢推定のセルを実行</p>
-      <div class="mt-7 space-y-4 text-base leading-relaxed text-neutral-800">
-        <div><span class="mr-4 font-mono text-neutral-600">01</span>YOLO Poseモデルを読み込む</div>
-        <div><span class="mr-4 font-mono text-neutral-600">02</span>点と線を画像へ表示</div>
-        <div><span class="mr-4 font-mono text-neutral-600">03</span>関節座標の形を確認</div>
-      </div>
-      <p class="mt-8 border-l-2 border-neutral-500 pl-4 text-sm leading-relaxed text-neutral-700">
-        人物検出は「どこにいるか」<br>
-        姿勢推定は「どんな姿勢か」
-      </p>
-    </div>
-    <div class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">YOLO26 POSE / MULTI-PERSON</div>
-      <pre class="mt-5 whitespace-pre-wrap text-sm leading-relaxed text-neutral-900">model = YOLO(&quot;yolo26m-pose.pt&quot;)&#10;&#10;result = model.predict(&#10;    image,&#10;    imgsz=960,&#10;    conf=0.25&#10;)[0]&#10;&#10;print(result.keypoints.data.shape)&#10;# 人数 × 17 × 3</pre>
-      <a href="https://docs.ultralytics.com/tasks/pose/" target="_blank" class="mt-5 text-xs text-neutral-600 underline">Ultralytics Pose documentation</a>
-    </div>
-  </div>
-</div>
+```python
+model = YOLO("yolo26m-pose.pt")
+
+result = model.predict(
+    image,
+    imgsz=960,
+    conf=0.25
+)[0]
+
+print(result.keypoints.data.shape)
+# 人数 × 17 × 3
+```
+
+<a href="https://docs.ultralytics.com/tasks/pose/" target="_blank" rel="noopener noreferrer" class="text-lg">Ultralytics Pose documentation</a>

@@ -26,8 +26,8 @@ Google Colabで開くのは生成された `.ipynb` ファイルです
 GitHubへ公開したNotebookは次のURLから直接開けます
 
 ```text
-https://colab.research.google.com/github/micanis-dev/open-campus/blob/main/python/03_image_processing.ipynb
-https://colab.research.google.com/github/micanis-dev/open-campus/blob/main/python/04_person_detection_pose.ipynb
+https://colab.research.google.com/github/micanis/mySlide/blob/main/decks/open-campus/python/03_image_processing.ipynb
+https://colab.research.google.com/github/micanis/mySlide/blob/main/decks/open-campus/python/04_person_detection_pose.ipynb
 ```
 
 リポジトリ名やブランチ名を変更した場合は、Slidev内のリンクも同じ値へ変更します

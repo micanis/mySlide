@@ -5,9 +5,10 @@ let runtimePromise: Promise<PyodideAPI> | undefined
 
 async function getRuntime() {
   if (!runtimePromise) {
-    runtimePromise = import('pyodide').then(({ loadPyodide }) =>
+    // The CDN files must match the installed package version exactly
+    runtimePromise = import('pyodide').then(({ loadPyodide, version }) =>
       loadPyodide({
-        indexURL: 'https://cdn.jsdelivr.net/pyodide/v314.0.6/full/',
+        indexURL: `https://cdn.jsdelivr.net/pyodide/v${version}/full/`,
       }),
     )
   }
@@ -116,9 +117,10 @@ _slide_result = _slide_stdout.getvalue()
   min-height: 0;
   height: 100%;
   display: grid;
-  grid-template-rows: 42px minmax(0, 1fr) 120px;
+  grid-template-rows: 48px minmax(0, 1fr) 118px;
   overflow: hidden;
-  border: 1px solid #a3a3a3;
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
   background: #fafafa;
   color: #171717;
 }
@@ -130,7 +132,7 @@ _slide_result = _slide_stdout.getvalue()
   border-bottom: 1px solid #a3a3a3;
   padding: 0 12px 0 14px;
   color: #525252;
-  font: 700 11px/1 "JetBrains Mono", ui-monospace, monospace;
+  font: 700 14px/1 "JetBrains Mono", ui-monospace, monospace;
   letter-spacing: .12em;
 }
 
@@ -151,8 +153,8 @@ _slide_result = _slide_stdout.getvalue()
   border: 1px solid #525252;
   background: #e5e5e5;
   color: #171717;
-  padding: 8px 12px;
-  font: 800 10px/1 "JetBrains Mono", ui-monospace, monospace;
+  padding: 10px 16px;
+  font: 800 13px/1 "JetBrains Mono", ui-monospace, monospace;
   letter-spacing: .1em;
   cursor: pointer;
 }
@@ -175,7 +177,7 @@ _slide_result = _slide_stdout.getvalue()
   flex: none;
   padding: 9px 12px 7px;
   color: #737373;
-  font: 700 9px/1 "JetBrains Mono", ui-monospace, monospace;
+  font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace;
   letter-spacing: .14em;
 }
 
@@ -189,7 +191,7 @@ pre {
   outline: none;
   background: transparent;
   color: #171717;
-  font: 14px/1.55 "JetBrains Mono", ui-monospace, monospace;
+  font: 17px/1.5 "JetBrains Mono", ui-monospace, monospace;
   tab-size: 4;
 }
 
@@ -214,7 +216,7 @@ pre {
   padding: 0 12px 10px;
   white-space: pre-wrap;
   overflow: auto;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .runner-output pre {

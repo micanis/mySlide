@@ -1,208 +1,188 @@
 ---
-layout: center
+layout: section
+section: '05'
+level: 1
 ---
 
-<div class="text-center">
-  <div class="text-sm font-mono tracking-widest text-neutral-500 mb-6">SECTION 05</div>
-  <h1 class="text-5xl font-bold">Gemini Canvasと姿勢推定</h1>
-</div>
+# Gemini Canvasと姿勢推定
 
 ---
-layout: default
+title: 5.1 アイデアをWebアプリにする
+level: 2
 ---
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">5.1 アイデアをWebアプリにする</h1>
-  <p class="mt-7 text-lg leading-relaxed text-neutral-800">
-    Gemini Canvasは、会話しながらコードを作り<br>
-    その場で動きを確認できる制作スペースです
-  </p>
-  <div class="mt-10 min-h-0 flex-1 grid grid-cols-3 gap-5">
-    <div class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">01 / DESCRIBE</div>
-      <p class="mt-4 text-2xl font-bold text-neutral-900">まずは<br>言葉で伝えよう</p>
-      <p class="mt-3 text-sm leading-relaxed text-neutral-700">作りたいものと必要な機能をプロンプトに書く</p>
-    </div>
-    <div class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">02 / PREVIEW</div>
-      <p class="mt-4 text-2xl font-bold text-neutral-900">次に<br>動かしてみる</p>
-      <p class="mt-3 text-sm leading-relaxed text-neutral-700">生成されたアプリをプレビューですぐに試す</p>
-    </div>
-    <div class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">03 / IMPROVE</div>
-      <p class="mt-4 text-2xl font-bold text-neutral-900">そして<br>機能追加も対話で</p>
-      <p class="mt-3 text-sm leading-relaxed text-neutral-700">結果を見て、追加や修正を具体的に頼む</p>
-    </div>
+Gemini Canvasは、会話しながらコードを作り<br>
+その場で動きを確認できる制作スペースです
+
+<div class="mt-6 grid grid-cols-3 gap-5">
+  <div class="card">
+    <span class="label">01 / Describe</span>
+    <h3>まずは言葉で伝えよう</h3>
+    <div class="note">作りたいものと必要な機能をプロンプトに書く</div>
+  </div>
+  <div class="card">
+    <span class="label">02 / Preview</span>
+    <h3>次に動かしてみる</h3>
+    <div class="note">生成されたアプリをプレビューですぐに試す</div>
+  </div>
+  <div class="card">
+    <span class="label">03 / Improve</span>
+    <h3>機能追加も対話で</h3>
+    <div class="note">結果を見て、追加や修正を具体的に頼む</div>
   </div>
 </div>
 
 ---
-layout: default
+layout: n-columns
+columns: 2
+gap: 40
+title: 5.2 Canvasを開く
+level: 2
 ---
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">5.2 Canvasを開く</h1>
-  <div class="mt-8 min-h-0 flex-1 grid grid-cols-[1.05fr_.95fr] gap-10">
-    <div class="flex flex-col justify-center pr-4">
-      <div class="space-y-5 text-lg leading-relaxed text-neutral-800">
-        <div class="border-l-2 border-neutral-500 pl-5"><span class="mr-4 font-mono text-neutral-600">01</span>Googleアカウントでログイン</div>
-        <div class="border-l-2 border-neutral-500 pl-5"><span class="mr-4 font-mono text-neutral-600">02</span>プラスマーク（＋）の「Canvas」を選ぶ</div>
-        <div class="border-l-2 border-neutral-500 pl-5"><span class="mr-4 font-mono text-neutral-600">03</span>次のスライドのプロンプトを送る</div>
-      </div>
-      <p class="mt-8 text-sm leading-relaxed text-neutral-700">
-        カメラの使用確認が表示されたら<br>
-        この実習中だけ許可しましょう
-      </p>
-    </div>
-    <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-8 no-underline">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">OPEN GEMINI</div>
-      <div class="mt-6 text-3xl font-bold leading-relaxed text-neutral-900">クリックして<br>Canvasを開く</div>
-      <div class="mt-8 border-t border-neutral-500 pt-5 text-sm text-neutral-700">gemini.google.com</div>
-    </a>
+1. Googleアカウントでログイン
+2. プラスマーク（＋）の「Canvas」を選ぶ
+3. 次のスライドのプロンプトを送る
+
+<div class="note mt-6">
+カメラの使用確認が表示されたら、この実習中だけ許可しましょう
+</div>
+
+::column-2::
+
+<a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="card flex h-full flex-col justify-center !no-underline">
+  <span class="label">Open Gemini</span>
+  <span class="mt-2 text-4xl font-bold leading-snug text-neutral-900">クリックして<br>Canvasを開く</span>
+  <span class="mt-8 border-t border-neutral-200 pt-4 text-xl text-neutral-600">gemini.google.com</span>
+</a>
+
+---
+title: 5.3 最初のプロンプト
+level: 2
+---
+
+<div class="grid h-full grid-cols-[1.3fr_0.7fr] gap-8">
+  <div class="card flex flex-col justify-center">
+    <span class="label">Copy &amp; paste</span>
+    <pre class="prompt">ブラウザで動くリアルタイム姿勢推定Webアプリを作ってください。&#10;
+・「カメラを開始」ボタンを置く
+・カメラ映像の上に、体のキーポイントと骨格の線を描く
+・検出した人数を画面に表示する
+・カメラは自動で起動せず、ボタンを押してから許可を求める
+・処理中とエラーのメッセージを日本語で表示する
+・バックエンドやAPIキーを使わず、ブラウザ内で動かす</pre>
+  </div>
+  <div class="flex flex-col justify-center">
+    <h3>目的と条件を分けて伝える</h3>
+    <dl class="note mt-4 grid grid-cols-[auto_1fr] gap-x-4 gap-y-3">
+      <dt class="label m-0 self-center">What</dt><dd class="m-0">まず何を作るか？</dd>
+      <dt class="label m-0 self-center">Action</dt><dd class="m-0">何ができると嬉しいか</dd>
+      <dt class="label m-0 self-center">Rule</dt><dd class="m-0">守ってほしい条件</dd>
+      <dt class="label m-0 self-center">Look</dt><dd class="m-0">アプリの見た目</dd>
+    </dl>
   </div>
 </div>
 
 ---
-layout: default
+title: 5.4 まず動作を確認する
+level: 2
 ---
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">5.3 最初のプロンプト</h1>
-  <div class="mt-7 min-h-0 flex-1 grid grid-cols-[1.25fr_.75fr] gap-8">
-    <div class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">COPY &amp; PASTE</div>
-      <pre class="mt-5 whitespace-pre-wrap font-sans text-[15px] leading-relaxed text-neutral-900">ブラウザで動くリアルタイム姿勢推定Webアプリを作ってください。&#10;&#10;・「カメラを開始」ボタンを置く&#10;・カメラ映像の上に、体のキーポイントと骨格の線を描く&#10;・検出した人数を画面に表示する&#10;・カメラは自動で起動せず、ボタンを押してから許可を求める&#10;・処理中とエラーのメッセージを日本語で表示する&#10;・バックエンドやAPIキーを使わず、ブラウザ内で動かす</pre>
-    </div>
-    <div class="flex flex-col justify-center">
-      <p class="mt-4 text-2xl font-bold leading-relaxed text-neutral-900">目的と条件を分けて伝える</p>
-      <div class="mt-7 space-y-4 text-sm leading-relaxed text-neutral-700">
-        <div><span class="mr-3 font-mono text-neutral-600">WHAT</span>まず何を作るか？</div>
-        <div><span class="mr-3 font-mono text-neutral-600">ACTION</span>何ができると嬉しいか</div>
-        <div><span class="mr-3 font-mono text-neutral-600">RULE</span>守ってほしい条件</div>
-        <div><span class="mr-3 font-mono text-neutral-600">LOOK</span>アプリの見た目</div>
-      </div>
-    </div>
+完成に見えても、実際に操作して確かめます
+
+<div class="mt-4 grid grid-cols-2 gap-5">
+  <div class="card">
+    <span class="label">Camera</span>
+    <h3>ボタンから起動できますか？</h3>
+    <div class="note">許可を断ったときも画面が止まらないか確認</div>
+  </div>
+  <div class="card">
+    <span class="label">Detection</span>
+    <h3>点と線が体についてきますか？</h3>
+    <div class="note">腕を上げる、横を向く、画面から離れる</div>
+  </div>
+  <div class="card">
+    <span class="label">Display</span>
+    <h3>文字は読みやすい状態ですか？</h3>
+    <div class="note">映像と説明が重ならず、状態が分かるか確認</div>
+  </div>
+  <div class="card">
+    <span class="label">Console</span>
+    <h3>エラーは出ていませんか？</h3>
+    <div class="note">動かないときはコンソールを開き、修正を依頼する</div>
   </div>
 </div>
 
 ---
-layout: default
+title: 5.5 機能を1つ追加しよう
+level: 2
 ---
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">5.4 まず動作を確認する</h1>
-  <p class="mt-7 text-lg leading-relaxed text-neutral-800">完成に見えても、実際に操作して確かめます</p>
-  <div class="mt-9 min-h-0 flex-1 grid grid-cols-2 gap-x-8 gap-y-5">
-    <div class="border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">CAMERA</div>
-      <p class="mt-3 text-xl font-bold text-neutral-900">ボタンから起動できますか？</p>
-      <p class="mt-2 text-sm text-neutral-700">許可を断ったときも画面が止まらないか確認</p>
-    </div>
-    <div class="border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">DETECTION</div>
-      <p class="mt-3 text-xl font-bold text-neutral-900">点と線が体についてきますか？</p>
-      <p class="mt-2 text-sm text-neutral-700">腕を上げる、横を向く、画面から離れる</p>
-    </div>
-    <div class="border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">DISPLAY</div>
-      <p class="mt-3 text-xl font-bold text-neutral-900">文字は読みやすい状態ですか？</p>
-      <p class="mt-2 text-sm text-neutral-700">映像と説明が重ならず、状態が分かるか確認</p>
-    </div>
-    <div class="border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">CONSOLE</div>
-      <p class="mt-3 text-xl font-bold text-neutral-900">エラーは出ていませんか？</p>
-      <p class="mt-2 text-sm text-neutral-700">動かないときはCanvasのコンソールを開き、修正依頼をしましょう</p>
-    </div>
+気になるものを選び、Geminiへ追加を頼みます
+
+<div class="mt-4 grid grid-cols-3 gap-5">
+  <div class="card flex flex-col">
+    <span class="label">Challenge A</span>
+    <h3>ポーズ判定</h3>
+    <div class="note flex-1">両手を上げたら「GOOD!」と大きく表示する</div>
+    <div class="note mt-4 border-t border-neutral-200 pt-3 !text-lg">肩と手首のY座標を比べる</div>
+  </div>
+  <div class="card flex flex-col">
+    <span class="label">Challenge B</span>
+    <h3>回数カウント</h3>
+    <div class="note flex-1">スクワットの回数を数えてリセットボタンを付ける</div>
+    <div class="note mt-4 border-t border-neutral-200 pt-3 !text-lg">ひざと腰の位置の変化を見る</div>
+  </div>
+  <div class="card flex flex-col">
+    <span class="label">Challenge C</span>
+    <h3>見た目を変更</h3>
+    <div class="note flex-1">点と線の色を変え、ゲーム画面のようにデザインする</div>
+    <div class="note mt-4 border-t border-neutral-200 pt-3 !text-lg">機能を変えずUIだけ直す</div>
   </div>
 </div>
 
 ---
-layout: default
+title: 5.6 うまく動かないときの伝え方
+level: 2
 ---
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">5.5 機能を1つ追加しよう</h1>
-  <p class="mt-7 text-lg leading-relaxed text-neutral-800">気になるものを選び、Geminiへ追加を頼みます</p>
-  <div class="mt-9 min-h-0 flex-1 grid grid-cols-3 gap-5">
-    <div class="flex flex-col border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">CHALLENGE A</div>
-      <p class="mt-4 text-xl font-bold text-neutral-900">ポーズ判定</p>
-      <p class="mt-3 flex-1 text-sm leading-relaxed text-neutral-700">両手を上げたら「GOOD!」と大きく表示する</p>
-      <div class="mt-5 border-t border-neutral-400 pt-4 text-xs text-neutral-600">肩と手首のY座標を比べる</div>
-    </div>
-    <div class="flex flex-col border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">CHALLENGE B</div>
-      <p class="mt-4 text-xl font-bold text-neutral-900">回数カウント</p>
-      <p class="mt-3 flex-1 text-sm leading-relaxed text-neutral-700">スクワットの回数を数えてリセットボタンを付ける</p>
-      <div class="mt-5 border-t border-neutral-400 pt-4 text-xs text-neutral-600">ひざと腰の位置の変化を見る</div>
-    </div>
-    <div class="flex flex-col border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">CHALLENGE C</div>
-      <p class="mt-4 text-xl font-bold text-neutral-900">見た目を変更</p>
-      <p class="mt-3 flex-1 text-sm leading-relaxed text-neutral-700">点と線の色を変え、ゲーム画面のようにデザインする</p>
-      <div class="mt-5 border-t border-neutral-400 pt-4 text-xs text-neutral-600">機能を変えずUIだけ直す</div>
-    </div>
+<div class="grid h-full grid-cols-[0.8fr_1.2fr] gap-8">
+  <div class="flex flex-col justify-center">
+    <ol>
+      <li>実際に起きたこと</li>
+      <li>期待している動き</li>
+      <li>画面やコンソールの表示</li>
+      <li>今回直す範囲</li>
+    </ol>
+    <blockquote class="mt-6 !text-xl !leading-relaxed">一度に全部頼まず、1つ直したらもう一度試すことがコツです</blockquote>
+  </div>
+  <div class="card flex flex-col justify-center">
+    <span class="label">Fix prompt</span>
+    <pre class="prompt">「カメラを開始」を押しても映像が表示されません。&#10;
+期待する動き：
+許可後にカメラ映像が表示され、姿勢推定が始まる。&#10;
+画面の表示：
+「カメラを準備中」のまま変わらない。&#10;
+ほかのデザインや機能は変えず、カメラ開始処理だけを確認して修正してください。エラーの原因も短く説明してください。</pre>
   </div>
 </div>
 
 ---
-layout: default
+title: 5.7 AIと一緒に作る流れ
+level: 2
 ---
 
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">5.6 うまく動かないときの伝え方</h1>
-  <div class="mt-8 min-h-0 flex-1 grid grid-cols-[.8fr_1.2fr] gap-9">
-    <div class="flex flex-col justify-center">
-      <div class="space-y-5 text-base leading-relaxed text-neutral-800">
-        <div><span class="mr-4 font-mono text-neutral-600">01</span>実際に起きたこと</div>
-        <div><span class="mr-4 font-mono text-neutral-600">02</span>期待している動き</div>
-        <div><span class="mr-4 font-mono text-neutral-600">03</span>画面やコンソールの表示</div>
-        <div><span class="mr-4 font-mono text-neutral-600">04</span>今回直す範囲</div>
-      </div>
-      <p class="mt-8 border-l-2 border-neutral-500 pl-4 text-sm leading-relaxed text-neutral-700">
-        一度に全部頼まず<br>
-        1つ直したらもう一度試すことがコツです
-      </p>
-    </div>
-    <div class="flex flex-col justify-center border border-neutral-500 bg-neutral-100 p-6">
-      <div class="text-xs font-mono tracking-widest text-neutral-600">FIX PROMPT</div>
-      <pre class="mt-5 whitespace-pre-wrap font-sans text-[15px] leading-relaxed text-neutral-900">「カメラを開始」を押しても映像が表示されません。&#10;&#10;期待する動き：&#10;許可後にカメラ映像が表示され、姿勢推定が始まる。&#10;&#10;画面の表示：&#10;「カメラを準備中」のまま変わらない。&#10;&#10;ほかのデザインや機能は変えず、カメラ開始処理だけを確認して修正してください。エラーの原因も短く説明してください。</pre>
-    </div>
-  </div>
+<div class="mt-6 grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-4 text-center">
+  <div class="card"><span class="label">Idea</span><h3 class="!m-0">考えて</h3></div>
+  <div class="text-3xl text-neutral-400">→</div>
+  <div class="card"><span class="label">Prompt</span><h3 class="!m-0">伝えて</h3></div>
+  <div class="text-3xl text-neutral-400">→</div>
+  <div class="card"><span class="label">Test</span><h3 class="!m-0">試して</h3></div>
+  <div class="text-3xl text-neutral-400">→</div>
+  <div class="card"><span class="label">Improve</span><h3 class="!m-0">直す</h3></div>
 </div>
 
----
-layout: default
----
-
-<div class="h-full flex flex-col">
-  <h1 class="text-4xl font-bold">5.7 AIと一緒に作る流れ</h1>
-  <div class="mt-10 min-h-0 flex-1 flex flex-col justify-center">
-    <div class="grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-4">
-      <div class="border border-neutral-500 bg-neutral-100 p-6 text-center">
-        <div class="text-xs font-mono text-neutral-600">IDEA</div>
-        <p class="mt-3 text-xl font-bold text-neutral-900">考えて</p>
-      </div>
-      <div class="text-2xl text-neutral-500">→</div>
-      <div class="border border-neutral-500 bg-neutral-100 p-6 text-center">
-        <div class="text-xs font-mono text-neutral-600">PROMPT</div>
-        <p class="mt-3 text-xl font-bold text-neutral-900">伝えて</p>
-      </div>
-      <div class="text-2xl text-neutral-500">→</div>
-      <div class="border border-neutral-500 bg-neutral-100 p-6 text-center">
-        <div class="text-xs font-mono text-neutral-600">TEST</div>
-        <p class="mt-3 text-xl font-bold text-neutral-900">試して</p>
-      </div>
-      <div class="text-2xl text-neutral-500">→</div>
-      <div class="border border-neutral-500 bg-neutral-100 p-6 text-center">
-        <div class="text-xs font-mono text-neutral-600">IMPROVE</div>
-        <p class="mt-3 text-xl font-bold text-neutral-900">直す</p>
-      </div>
-    </div>
-    <p class="mt-12 text-center text-2xl font-bold leading-relaxed text-neutral-900">
-      AIがコードを書いても<br>
-      何を作り、どう確かめるかを決めるのは<br>
-      自分であることを忘れないようにしましょう
-    </p>
-  </div>
-</div>
+<p class="!mt-12 text-center !text-3xl font-bold !leading-relaxed text-neutral-900">
+AIがコードを書いても、何を作り、どう確かめるかを<br>
+決めるのは自分であることを忘れないようにしましょう
+</p>

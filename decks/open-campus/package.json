@@ -1,21 +1,16 @@
 {
-  "name": "frontend",
+  "name": "@myslide/open-campus",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
-    "deploy": "pnpm build && wrangler pages deploy dist --project-name ai-system-open-campus --branch main",
     "dev": "slidev --open",
+    "build": "slidev build",
     "export": "slidev export"
   },
   "dependencies": {
-    "@slidev/cli": "^52.19.1",
-    "@slidev/theme-default": "latest",
+    "@slidev/cli": "^53.0.0",
     "pyodide": "^314.0.6",
+    "slidev-theme-micanis": "github:micanis/slidev-theme-micanis#v1.0.2",
     "vue": "^3.5.33"
-  },
-  "devDependencies": {
-    "playwright-chromium": "^1.62.1",
-    "wrangler": "^4.126.0"
   }
 }
